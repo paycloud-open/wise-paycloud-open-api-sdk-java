@@ -24,4 +24,14 @@ public class PayUnifiedorderResponse extends OpenApiResponse{
 
     // Payment parameter packet
     private String pay_params;
+
+    // Amount of the transaction
+    private Double trans_amount;
+
+    // Customer pays handling fee
+    private Double trans_fee_c;
+
+    // VAT
+    private Double vat_amount;
+
 }

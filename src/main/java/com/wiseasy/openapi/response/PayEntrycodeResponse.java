@@ -22,4 +22,13 @@ public class PayEntrycodeResponse extends OpenApiResponse{
     // Original response message requesting payment company
     private String pay_original_response;
 
+    // Amount of the transaction
+    private Double trans_amount;
+
+    // Customer pays handling fee
+    private Double trans_fee_c;
+
+    // VAT
+    private Double vat_amount;
+
 }

@@ -29,8 +29,11 @@ public class BscancPaySubmitResponse extends OpenApiResponse{
     // Buyer user ID, the ID of the user registered by the payer in the wallet application
     private String pay_user_account_id;
 
-    // Transaction amount
+    // Amount of the transaction
     private Double trans_amount;
+
+    // Customer pays handling fee
+    private Double trans_fee_c;
 
     // The actual amount of cash paid by the customer
     private Double paid_amount;

@@ -28,6 +28,9 @@ public class PayInappOrderRequest extends OpenApiRequest<PayInappOrderResponse>{
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
+    // Order Amount
+    private Double order_amount;
+
     // Priced transaction amount
     private Double trans_amount;
 
