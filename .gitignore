@@ -44,7 +44,7 @@ target/
 /web-app/WEB-INF/classes
  
 # "temporary" build files
-target/
+#target/
 out/
 build/
  
