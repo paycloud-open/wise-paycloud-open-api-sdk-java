@@ -37,8 +37,8 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
-    // Priced transaction amount
-    private Double trans_amount;
+    // Order amount
+    private Double order_amount;
 
     // Transaction type
     private Integer trans_type;

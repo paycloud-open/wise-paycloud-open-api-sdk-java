@@ -32,6 +32,9 @@ public class AutoDebitPaySubmitResponse extends OpenApiResponse {
     // Transaction amount
     private Double trans_amount;
 
+    // Customer pays handling fee
+    private Double trans_fee_c;
+
     // The actual amount of cash paid by the customer
     private Double paid_amount;
 

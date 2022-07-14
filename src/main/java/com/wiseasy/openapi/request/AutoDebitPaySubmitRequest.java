@@ -1,6 +1,6 @@
 package com.wiseasy.openapi.request;
 
-import com.wiseasy.openapi.response.BscancPaySubmitResponse;
+import com.wiseasy.openapi.response.AutoDebitPaySubmitResponse;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AutoDebitPaySubmitRequest extends OpenApiRequest<BscancPaySubmitResponse> {
+public class AutoDebitPaySubmitRequest extends OpenApiRequest<AutoDebitPaySubmitResponse> {
 
     // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
     // You can log in to the merchant platform to get it
@@ -33,8 +33,8 @@ public class AutoDebitPaySubmitRequest extends OpenApiRequest<BscancPaySubmitRes
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
-    // Priced transaction amount
-    private Double trans_amount;
+    // Order amount
+    private Double order_amount;
 
     // Description of the goods or services of the order
     private String description;
