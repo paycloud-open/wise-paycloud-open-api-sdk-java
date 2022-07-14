@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class MerchantOnboardingResponse extends OpenApiResponse{
+public class MerchantOnboardingResponse extends OpenApiResponse {
 
     // Merchant NO.
     private String merchant_no;

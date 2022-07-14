@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MerchantQueryRequest extends OpenApiRequest<MerchantQueryResponse>{
+public class MerchantQueryRequest extends OpenApiRequest<MerchantQueryResponse> {
 
     // Institution no.
     private String institution_no;

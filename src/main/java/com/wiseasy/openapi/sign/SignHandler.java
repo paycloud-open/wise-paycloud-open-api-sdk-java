@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * @Auther: liqie
  * @Date: 2021/6/3 16:40
- * @Description:  Signature verification processing
+ * @Description: Signature verification processing
  */
 public class SignHandler {
 
@@ -19,11 +19,12 @@ public class SignHandler {
 
     /**
      * Signature function
+     *
      * @param privateKey
-     * @param params Parameters to be signed
+     * @param params     Parameters to be signed
      * @return 签名字符串
      */
-    public static String sign(String privateKey, Map<String, Object> params) throws OpenApiException{
+    public static String sign(String privateKey, Map<String, Object> params) throws OpenApiException {
         String sign = signWithRSA(params, privateKey);
         if (StringUtils.isBlank(sign)) {
             throw new OpenApiException(Constants.SIGNATURE_FAILURE, "Sign fail");
@@ -33,20 +34,21 @@ public class SignHandler {
 
     /**
      * verifySign
+     *
      * @param publicKey
-     * @param params Parameters to be verified
+     * @param params    Parameters to be verified
      * @return
      */
-    public static boolean verifySign(String publicKey, Map<String, Object> params){
-        String sign = (String)params.get("sign");
-        if(StringUtils.isBlank(publicKey) || StringUtils.isBlank(sign)){
+    public static boolean verifySign(String publicKey, Map<String, Object> params) {
+        String sign = (String) params.get("sign");
+        if (StringUtils.isBlank(publicKey) || StringUtils.isBlank(sign)) {
             return true;
-        }else {
+        } else {
             return verifySignWithRSA(params, publicKey, sign);
         }
     }
 
-    private static String signWithRSA(Map<String, Object> sParaTemp, String privateKey){
+    private static String signWithRSA(Map<String, Object> sParaTemp, String privateKey) {
         // Remove empty values and 'sign' parameters in the array
         Map<String, Object> sPara = paraFilter(sParaTemp);
 
@@ -59,7 +61,7 @@ public class SignHandler {
         return mysign;
     }
 
-    private static boolean verifySignWithRSA(Map<String, Object> sParaTemp, String publicKey, String sign){
+    private static boolean verifySignWithRSA(Map<String, Object> sParaTemp, String publicKey, String sign) {
         // Remove empty values and 'sign' parameters in the array
         Map<String, Object> sPara = paraFilter(sParaTemp);
 
@@ -73,6 +75,7 @@ public class SignHandler {
 
     /**
      * Remove empty values and 'sign' parameters in the array
+     *
      * @param sArray Parameters to be signed
      * @return
      */
@@ -95,6 +98,7 @@ public class SignHandler {
     /**
      * All elements of the array are spliced into a string according to the pattern of "key=value" with "&" characters
      * and sorted according to the parameter key
+     *
      * @param params Parameter groups that need to be sorted and participate in character splicing
      * @return
      */

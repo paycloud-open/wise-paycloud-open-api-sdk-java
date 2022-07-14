@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class PayEntrycodeRequest extends OpenApiRequest<PayEntrycodeResponse>{
+public class PayEntrycodeRequest extends OpenApiRequest<PayEntrycodeResponse> {
 
     // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
     // You can log in to the merchant platform to get it

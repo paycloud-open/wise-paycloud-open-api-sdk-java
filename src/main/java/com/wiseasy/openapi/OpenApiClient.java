@@ -63,7 +63,7 @@ public class OpenApiClient {
      * Call the internal handler function of the gateway API
      *
      * @param <T>
-     * @param request   The request object
+     * @param request The request object
      * @return Response object
      * @throws OpenApiException
      */
@@ -93,7 +93,7 @@ public class OpenApiClient {
         String apiUrl = gatewayUrl + Constants.API_ENTRY_URL;
         String resultStr;
         try {
-            log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn +"] -->> " + requestParams.toJSONString());
+            log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());
 
             resultStr = HttpClientUtil.doPost(apiUrl, reqHeaders, requestParams);
 
@@ -111,7 +111,7 @@ public class OpenApiClient {
 
         // Convert the returned JSON to OpenApiResponse
         Object data = resultJson.get(Constants.DATA);
-        if(data != null){
+        if (data != null) {
             String dataStr = resultJson.getString(Constants.DATA);
             resultJson.putAll(JSONObject.parseObject(dataStr));
         }
@@ -124,7 +124,7 @@ public class OpenApiClient {
     /**
      * Call the internal handler function of the gateway API
      *
-     * @param request   The request object
+     * @param request The request object
      * @return Response object
      * @throws OpenApiException
      */
@@ -160,7 +160,7 @@ public class OpenApiClient {
         String apiUrl = gatewayUrl + Constants.API_FILE_UPLOAD_URL;
         String resultStr;
         try {
-            log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn +"] -->> " + requestParams.toJSONString());
+            log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());
 
             resultStr = HttpClientUtil.doPostFile(apiUrl, reqHeaders, requestParams, fileMap);
 
@@ -178,7 +178,7 @@ public class OpenApiClient {
 
         // Convert the returned JSON to OpenApiResponse
         Object data = resultJson.get(Constants.DATA);
-        if(data != null){
+        if (data != null) {
             String dataStr = resultJson.getString(Constants.DATA);
             resultJson.putAll(JSONObject.parseObject(dataStr));
         }

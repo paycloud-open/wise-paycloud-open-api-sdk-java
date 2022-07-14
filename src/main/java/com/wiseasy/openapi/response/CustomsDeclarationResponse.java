@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class CustomsDeclarationResponse extends OpenApiResponse{
+public class CustomsDeclarationResponse extends OpenApiResponse {
 
     // Declare the result status code
     //PROCESSING

@@ -15,7 +15,7 @@ import org.apache.http.entity.mime.content.FileBody;
 @Getter
 @Setter
 @ToString
-public class FileUploadRequest extends OpenApiRequest<FileUploadResponse>{
+public class FileUploadRequest extends OpenApiRequest<FileUploadResponse> {
 
     private String institution_no;
 

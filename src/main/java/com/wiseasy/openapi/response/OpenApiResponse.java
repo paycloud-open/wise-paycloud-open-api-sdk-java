@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class OpenApiResponse{
+public class OpenApiResponse {
 
     /**
      * Status code, 0 means the request is successful, others means failure
@@ -35,9 +35,10 @@ public class OpenApiResponse{
 
     /**
      * Determine whether the interface request is successful
+     *
      * @return
      */
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return Constants.CODE_SUCCESS.equals(code);
     }
 

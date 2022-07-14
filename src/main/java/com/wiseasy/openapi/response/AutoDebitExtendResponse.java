@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class AutoDebitExtendResponse extends OpenApiResponse{
+public class AutoDebitExtendResponse extends OpenApiResponse {
 
     // Agreement ID of wechat or Alipay+
     private String contract_id;

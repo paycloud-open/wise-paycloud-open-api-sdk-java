@@ -19,7 +19,7 @@ public class FileUtil {
             out = new ByteArrayOutputStream();
 
             int ch;
-            while((ch = in.read()) != -1) {
+            while ((ch = in.read()) != -1) {
                 out.write(ch);
             }
 

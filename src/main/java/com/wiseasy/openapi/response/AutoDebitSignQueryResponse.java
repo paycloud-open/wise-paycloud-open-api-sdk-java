@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class AutoDebitSignQueryResponse extends OpenApiResponse{
+public class AutoDebitSignQueryResponse extends OpenApiResponse {
     // Merchant side agreement number
     private String out_contract_code;
 

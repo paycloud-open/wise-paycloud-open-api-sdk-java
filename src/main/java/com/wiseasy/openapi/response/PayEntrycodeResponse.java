@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class PayEntrycodeResponse extends OpenApiResponse{
+public class PayEntrycodeResponse extends OpenApiResponse {
 
     // Payment link URL
     private String pay_url;

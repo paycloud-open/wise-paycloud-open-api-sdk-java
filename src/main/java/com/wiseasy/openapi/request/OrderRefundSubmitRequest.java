@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class OrderRefundSubmitRequest extends OpenApiRequest<OrderRefundSubmitResponse>{
+public class OrderRefundSubmitRequest extends OpenApiRequest<OrderRefundSubmitResponse> {
 
     // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
     // You can log in to the merchant platform to get it

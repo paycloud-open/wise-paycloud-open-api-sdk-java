@@ -12,8 +12,8 @@ package com.wiseasy.openapi;
  */
 public class OpenApiException extends Exception {
 
-    private String            errCode;
-    private String            errMsg;
+    private String errCode;
+    private String errMsg;
 
     public OpenApiException(String errCode, String errMsg) {
         super(errCode + ":" + errMsg);

@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class AutoDebitSignResponse extends OpenApiResponse{
+public class AutoDebitSignResponse extends OpenApiResponse {
 
     // Sign jump URL
     private String sign_url;

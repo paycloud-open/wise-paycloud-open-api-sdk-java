@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class WisehubCloudPayOrderResponse extends OpenApiResponse{
+public class WisehubCloudPayOrderResponse extends OpenApiResponse {
 
     // Gateway message ID
     private String message_id;

@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AutoDebitSignRequest extends OpenApiRequest<AutoDebitSignResponse>{
+public class AutoDebitSignRequest extends OpenApiRequest<AutoDebitSignResponse> {
 
     // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
     // You can log in to the merchant platform to get it

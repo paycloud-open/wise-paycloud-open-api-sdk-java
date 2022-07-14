@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class OrderRevokerResponse extends OpenApiResponse{
+public class OrderRevokerResponse extends OpenApiResponse {
 
 
 }

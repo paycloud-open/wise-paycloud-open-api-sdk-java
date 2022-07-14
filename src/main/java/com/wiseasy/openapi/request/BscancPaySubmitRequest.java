@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BscancPaySubmitRequest extends OpenApiRequest<BscancPaySubmitResponse>{
+public class BscancPaySubmitRequest extends OpenApiRequest<BscancPaySubmitResponse> {
 
     // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
     // You can log in to the merchant platform to get it

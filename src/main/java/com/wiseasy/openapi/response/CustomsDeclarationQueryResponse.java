@@ -15,7 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class CustomsDeclarationQueryResponse extends OpenApiResponse{
+public class CustomsDeclarationQueryResponse extends OpenApiResponse {
 
     // Declaration records, split order may contain more than one record
     private List<DeclarationRecord> declaration_records;

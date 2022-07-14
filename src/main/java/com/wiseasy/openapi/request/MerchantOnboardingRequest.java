@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MerchantOnboardingRequest extends OpenApiRequest<MerchantOnboardingResponse>{
+public class MerchantOnboardingRequest extends OpenApiRequest<MerchantOnboardingResponse> {
 
     // Institution no.
     private String institution_no;

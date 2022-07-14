@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class AutoDebitCancelResponse extends OpenApiResponse{
+public class AutoDebitCancelResponse extends OpenApiResponse {
 
 
 }

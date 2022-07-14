@@ -15,7 +15,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class PayBillDownloadRequest extends OpenApiRequest<PayBillDownloadResponse>{
+public class PayBillDownloadRequest extends OpenApiRequest<PayBillDownloadResponse> {
 
     // Transaction date
     // The transaction date in the time zone where the merchant is located, in the format YYYY-MM-DD

@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class OrderQueryResponse extends OpenApiResponse{
+public class OrderQueryResponse extends OpenApiResponse {
 
     // The transaction serial number returned by the gateway, which uniquely identifies a transaction
     private String trans_no;

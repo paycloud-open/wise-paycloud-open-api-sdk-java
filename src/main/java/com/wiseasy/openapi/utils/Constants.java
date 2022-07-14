@@ -69,12 +69,6 @@ public class Constants {
 
     public static final String VERIFY_SIGNATURE_FAILED = "CLI004";
 
-    // Sandbox environment gateway address
-    public static final String SANDBOX_GATEWAY_URL = "https://gw.wisepaycloud.com";
-    // Product environment gateway address
-    public static final String GATEWAY_URL = "https://gw.paycloud.world";
-    public static final String HK_GATEWAY_URL = "https://gw-hk.paycloud.world";
-
     public static final String API_ENTRY_URL = "/api/entry";
     public static final String API_FILE_UPLOAD_URL = "/api/file/upload";
 

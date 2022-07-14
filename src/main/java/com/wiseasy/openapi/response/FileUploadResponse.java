@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString(callSuper = true)
-public class FileUploadResponse extends OpenApiResponse{
+public class FileUploadResponse extends OpenApiResponse {
 
     private String file_key;
 
