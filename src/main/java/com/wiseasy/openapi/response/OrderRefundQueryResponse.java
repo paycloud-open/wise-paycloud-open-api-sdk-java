@@ -29,8 +29,15 @@ public class OrderRefundQueryResponse extends OpenApiResponse {
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
+    // Order amount
+    private Double order_amount;
+
     // Priced transaction amount
     private Double trans_amount;
+
+    // Customer pays handling fee
+    private Double trans_fee_c;
+
 
     /**
      * When trans_status = 2, the following parameters are also returned, and pay_channel_trans_no, customer_paid_amount, and trans_end_time are not empty
@@ -50,5 +57,8 @@ public class OrderRefundQueryResponse extends OpenApiResponse {
 
     // Exchange Rate
     private String exchange_rate;
+
+    // VAT: abbreviation, value-added Tax. The payment channel shall collect value-added Tax from merchants according to local government laws
+    private Double vat_amount;
 
 }

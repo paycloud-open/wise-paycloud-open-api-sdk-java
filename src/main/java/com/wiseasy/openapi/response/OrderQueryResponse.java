@@ -29,8 +29,14 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
+    // Order amount
+    private Double order_amount;
+
     // Priced transaction amount
     private Double trans_amount;
+
+    // Customer pays handling fee
+    private Double trans_fee_c;
 
     // For additional information of merchants, the system only does transparent transmission, does not do business processing,
     // payment inquiries and notifications, and the statement download will be returned as it is
