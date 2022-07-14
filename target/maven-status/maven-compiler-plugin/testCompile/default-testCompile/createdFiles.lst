@@ -1,0 +1,4 @@
+com\wiseasy\openapi\PayProd.class
+com\wiseasy\openapi\PayTest.class
+com\wiseasy\openapi\UploadFileTest.class
+com\wiseasy\openapi\UploadFileProd.class

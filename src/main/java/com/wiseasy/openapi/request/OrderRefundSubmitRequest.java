@@ -32,6 +32,9 @@ public class OrderRefundSubmitRequest extends OpenApiRequest<OrderRefundSubmitRe
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
+    // Order Amount
+    private Double order_amount;
+
     // Refund Amount
     private Double trans_amount;
 
