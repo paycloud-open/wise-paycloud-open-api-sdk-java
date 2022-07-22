@@ -84,7 +84,6 @@ public class OpenApiClient {
         Map<String, Object> reqHeaders = new HashMap<>();
         String httpRequestPsn = genHttpRequestId();
         reqHeaders.put(Constants.HTTP_REQUEST_HEADER_PSN, httpRequestPsn);
-        reqHeaders.put("Cookie", "gray");
 
         // Signature
         requestParams.put(Constants.SIGN, SignHandler.sign(appRsaPrivateKey, requestParams));
