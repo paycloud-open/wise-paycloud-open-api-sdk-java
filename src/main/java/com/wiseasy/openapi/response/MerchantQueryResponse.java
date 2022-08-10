@@ -89,4 +89,7 @@ public class MerchantQueryResponse extends OpenApiResponse {
     // Account Branch
     private String account_branch;
 
+    // Terminal registration time, time zone: UTC / GMT 0, Format: YYYY-MM-DD HH:mm:ss
+    private String add_time;
+
 }
