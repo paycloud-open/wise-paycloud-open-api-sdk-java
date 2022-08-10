@@ -115,4 +115,9 @@ public class MerchantOnboardingRequest extends OpenApiRequest<MerchantOnboarding
     // Bank Acquiring Terminal Number
     private String tid;
 
+    // Merchant status,
+    // 1: normal, approved merchants, default is 1
+    // 2: Frozen, pending review or risky merchants are not allowed to use the service
+    private Integer status;
+
 }

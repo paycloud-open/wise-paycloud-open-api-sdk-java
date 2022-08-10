@@ -92,4 +92,9 @@ public class MerchantQueryResponse extends OpenApiResponse {
     // Terminal registration time, time zone: UTC / GMT 0, Format: YYYY-MM-DD HH:mm:ss
     private String add_time;
 
+    // Merchant status,
+    // 1: normal, approved merchants, default is 1
+    // 2: Frozen, pending review or risky merchants are not allowed to use the service
+    private Integer status;
+
 }
