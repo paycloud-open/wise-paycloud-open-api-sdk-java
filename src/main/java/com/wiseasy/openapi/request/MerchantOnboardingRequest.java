@@ -73,6 +73,8 @@ public class MerchantOnboardingRequest extends OpenApiRequest<MerchantOnboarding
     // Contact Phone
     private String contact_phone;
 
+    private Boolean create_super_admin;
+
     // Third-party store number
     private String out_store_no;
 
