@@ -22,6 +22,9 @@ public class AlipayplusBrandQueryRequest extends OpenApiRequest<AlipayplusBrandQ
     // LogoPattern
     private String logoPattern;
 
+    // Payment Scenario
+    private String pay_scenario;
+
     /**
      * The following parameters are optional input
      */
