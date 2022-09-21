@@ -64,4 +64,7 @@ public class PayMiniprogramOrderRequest extends OpenApiRequest<PayMiniprogramOrd
     // Specifies the callback address for receiving gateway payment notifications
     private String notify_url;
 
+    // extended parameter
+    private String ext_params;
+
 }

@@ -85,4 +85,7 @@ public class PayEntrycodeRequest extends OpenApiRequest<PayEntrycodeResponse> {
     // Wechat user sub-id
     private String sub_openid;
 
+    // extended parameter
+    private String ext_params;
+
 }

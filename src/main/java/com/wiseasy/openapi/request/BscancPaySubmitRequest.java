@@ -71,4 +71,7 @@ public class BscancPaySubmitRequest extends OpenApiRequest<BscancPaySubmitRespon
     // Specifies the callback address for receiving gateway payment notifications
     private String notify_url;
 
+    // extended parameter
+    private String ext_params;
+
 }
