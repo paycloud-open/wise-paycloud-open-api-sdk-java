@@ -32,4 +32,12 @@ public class ExchageRateGetRequest extends OpenApiRequest<ExchageRateGetResponse
 
     // Date
     private String date;
+
+    /**
+     * The following parameters are optional input
+     */
+
+    // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
+    // and facilitate merchants to conduct reconciliation and management
+    private String store_no;
 }
