@@ -63,4 +63,9 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
 
     // Specifies the callback address for receiving gateway payment notifications
     private String notify_url;
+
+    // Message receiving application
+    // WISEHUB(default)
+    // WISECASHIER
+    private String message_receiving_application;
 }
