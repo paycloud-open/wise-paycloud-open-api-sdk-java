@@ -8,9 +8,9 @@ import lombok.ToString;
 /**
  * @Auther: liqie
  * @Date: 2021/6/3 16:40
- * @Description: he back end of the merchant invokes this API to create a pre-paid transaction on the back end of the gateway payment service.
- * The gateway pushes a message to the designated application of the iot device (such as smart POS), arouses the cashier application on the device
- * to display the order, the cashier confirms the order, and guides the user to complete the payment.
+ * @Description: The merchant background calls this API to create a prepaid transaction in the gateway payment service background.
+ * The gateway push a message to the designated application of the IoT device (such as smart POS), starts the cash register application
+ * on the device to display the order, and the cashier confirms the order and guides the user to complete the payment.
  */
 @Getter
 @Setter
@@ -68,4 +68,10 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // WISEHUB(default)
     // WISECASHIER
     private String message_receiving_application;
+
+    // Remaining time of transaction expiration
+    private Integer expires;
+
+    // Order queue mode
+    private String order_queue_mode;
 }

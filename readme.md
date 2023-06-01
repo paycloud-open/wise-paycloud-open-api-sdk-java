@@ -1,3 +1,1 @@
-Please refer to the documentation on the official website: https://gw.paycloud.world/docs/#/
-
-中文请参考: https://gw.paycloud.world/docs/#/zh-cn/?id=readme
+If you experience any technical or business issues related to the Payment Gateway product, or if you wish to report the issue to us, you can contact our technical support team in a number of ways. As you get in touch with our business managers and start building partnerships, we will provide a professional support team to address your issues.
