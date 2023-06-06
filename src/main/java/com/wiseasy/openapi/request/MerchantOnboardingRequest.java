@@ -122,4 +122,7 @@ public class MerchantOnboardingRequest extends OpenApiRequest<MerchantOnboarding
     // 2: Frozen, pending review or risky merchants are not allowed to use the service
     private Integer status;
 
+    // Payment channel ID
+    private String pay_channel_id;
+
 }
