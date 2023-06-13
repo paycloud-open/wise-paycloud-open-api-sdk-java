@@ -29,4 +29,10 @@ public class MerchantQueryRequest extends OpenApiRequest<MerchantQueryResponse> 
     // Merchant NO.
     private String merchant_no;
 
+    // Bank Merchant Number
+    private String mid;
+
+    // Bank Terminal Number
+    private String tid;
+
 }
