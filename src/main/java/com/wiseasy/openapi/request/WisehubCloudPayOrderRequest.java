@@ -74,4 +74,7 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
 
     // Order queue mode
     private String order_queue_mode;
+
+    // Whether to reject transactions when the terminal is offline
+    private Boolean reject_trade_when_terminal_offline;
 }
