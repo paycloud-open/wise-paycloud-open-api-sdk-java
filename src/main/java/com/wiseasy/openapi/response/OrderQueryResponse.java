@@ -92,4 +92,7 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Transaction reference number
     private String ref_no;
 
+    // Payment platform serial number
+    private String pay_platform_trans_no;
+
 }
