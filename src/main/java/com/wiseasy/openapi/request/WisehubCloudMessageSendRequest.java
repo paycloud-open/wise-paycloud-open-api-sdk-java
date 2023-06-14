@@ -28,6 +28,11 @@ public class WisehubCloudMessageSendRequest extends OpenApiRequest<WisehubCloudM
     // Language used for broadcasting and printing Example: zh-CN, EN-US, JA-JP, etc
     private String language;
 
+    // Message receiving application
+    // WISEHUB(default)
+    // WISECASHIER
+    private String message_receiving_application;
+
     /**
      * The following parameters are optional input
      */
