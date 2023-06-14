@@ -89,4 +89,7 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Exchange Rate
     private String exchange_rate;
 
+    // Transaction reference number
+    private String ref_no;
+
 }

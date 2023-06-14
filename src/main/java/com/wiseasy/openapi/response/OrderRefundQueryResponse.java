@@ -61,4 +61,7 @@ public class OrderRefundQueryResponse extends OpenApiResponse {
     // VAT: abbreviation, value-added Tax. The payment channel shall collect value-added Tax from merchants according to local government laws
     private Double vat_amount;
 
+    // Transaction reference number
+    private String ref_no;
+
 }
