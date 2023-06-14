@@ -22,6 +22,9 @@ public class CustomsDeclarationQueryRequest extends OpenApiRequest<CustomsDeclar
     // Merchant Payment Order Number
     private String merchant_order_no;
 
+    // Merchant system order number
+    private String sub_merchant_order_no;
+
     // Merchant system declaration request ID
     private String customs_declaration_request_id;
 
