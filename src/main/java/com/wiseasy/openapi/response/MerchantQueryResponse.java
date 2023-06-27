@@ -97,4 +97,7 @@ public class MerchantQueryResponse extends OpenApiResponse {
     // 2: Frozen, pending review or risky merchants are not allowed to use the service
     private Integer status;
 
+    // Device SN, this parameter will be returned only when the merchant is queried by "tid" and the merchant exists
+    private String terminal_sn;
+
 }
