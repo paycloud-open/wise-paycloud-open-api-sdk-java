@@ -64,6 +64,9 @@ public class PayInappOrderRequest extends OpenApiRequest<PayInappOrderResponse> 
     // Specifies the callback address for receiving gateway payment notifications
     private String notify_url;
 
+    // Redirect the URL of the user’s page
+    private String return_url;
+
     // extended parameter
     private String ext_params;
 
