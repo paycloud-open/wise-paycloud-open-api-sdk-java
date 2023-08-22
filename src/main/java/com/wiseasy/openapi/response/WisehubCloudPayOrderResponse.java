@@ -22,4 +22,7 @@ public class WisehubCloudPayOrderResponse extends OpenApiResponse {
     // Terminal online status
     private String terminal_online_status;
 
+    // Transaction Amount
+    private Double trans_amount;
+
 }

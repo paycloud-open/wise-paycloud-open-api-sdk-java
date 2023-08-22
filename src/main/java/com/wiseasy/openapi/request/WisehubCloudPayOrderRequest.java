@@ -40,6 +40,9 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Order amount
     private Double order_amount;
 
+    // Tip Amount
+    private Double tip_amount;
+
     // Transaction type
     private Integer trans_type;
 
