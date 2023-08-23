@@ -80,4 +80,7 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
 
     // Whether to reject transactions when the terminal is offline
     private Boolean reject_trade_when_terminal_offline;
+
+    // API version
+    private String api_version;
 }
