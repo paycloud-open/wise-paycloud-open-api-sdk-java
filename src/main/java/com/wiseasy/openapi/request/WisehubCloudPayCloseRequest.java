@@ -21,6 +21,9 @@ public class WisehubCloudPayCloseRequest extends OpenApiRequest<WisehubCloudPayC
     // You can log in to the merchant platform to get it
     private String merchant_no;
 
+    // Message receiving application
+    private String message_receiving_application;
+
     // The serial numbers of POS and other devices, need to be bound on the merchant platform in advance
     private String terminal_sn;
 
@@ -38,5 +41,6 @@ public class WisehubCloudPayCloseRequest extends OpenApiRequest<WisehubCloudPayC
     // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
     // and facilitate merchants to conduct reconciliation and management
     private String store_no;
+
 
 }

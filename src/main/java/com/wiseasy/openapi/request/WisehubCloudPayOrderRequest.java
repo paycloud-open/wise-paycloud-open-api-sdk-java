@@ -68,8 +68,6 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     private String notify_url;
 
     // Message receiving application
-    // WISEHUB(default)
-    // WISECASHIER
     private String message_receiving_application;
 
     // Remaining time of transaction expiration
