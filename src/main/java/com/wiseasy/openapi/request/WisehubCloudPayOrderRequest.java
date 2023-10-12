@@ -40,6 +40,9 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Order amount
     private Double order_amount;
 
+    // Cashback amount
+    private Double cashback_amount;
+
     // Tip Amount
     private Double tip_amount;
 
@@ -48,10 +51,6 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
 
     // Description of the goods or services of the order
     private String description;
-
-    /**
-     * The following parameters are optional input
-     */
 
     // Original merchant system order number
     private String orig_merchant_order_no;
