@@ -98,4 +98,7 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Payment platform serial number
     private String pay_platform_trans_no;
 
+    // Cashier app or rigister app version
+    private String app_version;
+
 }
