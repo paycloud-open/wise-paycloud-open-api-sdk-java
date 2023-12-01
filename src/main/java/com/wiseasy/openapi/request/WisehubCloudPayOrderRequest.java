@@ -80,4 +80,7 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
 
     // API version
     private String api_version;
+
+    // Does the refund transaction verify the cashier password? 0: No 1: Yes, default value: 0
+    private Integer refund_verification_password;
 }
