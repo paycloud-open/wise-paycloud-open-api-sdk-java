@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wiseasy.paycloud</groupId>
     <artifactId>wise-paycloud-open-api-sdk-java</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-1</version>
     <packaging>jar</packaging>
 
 
@@ -57,7 +57,20 @@
     </dependencies>
 
 
-
+    <!-- 设定持续集成发布包服务器 -->
+    <distributionManagement>
+        <repository>
+            <id>wpos-nexus-server</id>
+            <name>Nexus Release Repository</name>
+            <url>http://123.56.84.239:8070/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>wpos-nexus-server</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://123.56.84.239:8070/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
 
 
 
