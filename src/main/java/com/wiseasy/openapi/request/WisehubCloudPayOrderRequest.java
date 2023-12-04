@@ -84,4 +84,5 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // When refund or void a transaction, does the store manager role need to authorize this operation on the terminal? 0: No 1: Yes, default value: 0
     private Integer required_terminal_authentication;
 
+
 }
