@@ -84,5 +84,8 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // When refund or void a transaction, does the store manager role need to authorize this operation on the terminal? 0: No 1: Yes, default value: 0
     private Integer required_terminal_authentication;
 
+    // Do you need terminal confirmation before proceeding with payment operations? The default is false. When set to true, you need to confirm the order first, otherwise you will directly enter the card reading interface
+    private Boolean confirm_on_terminal;
+
 
 }
