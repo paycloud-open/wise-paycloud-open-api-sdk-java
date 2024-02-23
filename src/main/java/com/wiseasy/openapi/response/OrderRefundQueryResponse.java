@@ -70,4 +70,10 @@ public class OrderRefundQueryResponse extends OpenApiResponse {
     // Cashier app or rigister app version
     private String app_version;
 
+    // Transaction error code, this parameter appears when trans_status = 1
+    private String trans_error_code;
+
+    // Transaction error message, this parameter appears when trans_status = 1
+    private String trans_error_msg;
+
 }
