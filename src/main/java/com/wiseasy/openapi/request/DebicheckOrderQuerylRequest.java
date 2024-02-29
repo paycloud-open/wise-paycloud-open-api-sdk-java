@@ -1,5 +1,6 @@
 package com.wiseasy.openapi.request;
 
+import com.wiseasy.openapi.response.DebicheckOrderQueryResponse;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
