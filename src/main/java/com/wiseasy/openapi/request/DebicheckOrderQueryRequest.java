@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class DebicheckOrderQuerylRequest extends OpenApiRequest<DebicheckOrderQueryResponse> {
+public class DebicheckOrderQueryRequest extends OpenApiRequest<DebicheckOrderQueryResponse> {
 
     // Specifies merchant NO assigned by payment gateway
     private String merchant_no;
