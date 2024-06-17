@@ -46,6 +46,12 @@ public class DebicheckOrderQueryResponse extends OpenApiResponse {
     // Bank card number to be verified
     private String account_no;
 
+    // First payment date, format: YYYY-MM-DD, for example: 2024-07-25
+    private String first_collection_date;
+
+    // Monthly payment date, format: DD, for example: 25
+    private String monthly_collect_date;
+
     // Debicheck authentication request time, time zone: UTC/GMT 0, Format: YYYY-MM-DD HH:mm:ss
     private String date;
 

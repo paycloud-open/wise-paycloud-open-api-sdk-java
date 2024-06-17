@@ -42,6 +42,12 @@ public class DebicheckOrderCreateRequest extends OpenApiRequest<DebicheckOrderCr
     // Bank card number to be verified
     private String account_no;
 
+    // First payment date, format: YYYY-MM-DD, for example: 2024-07-25
+    private String first_collection_date;
+
+    // Monthly payment date, format: DD, for example: 25
+    private String monthly_collect_date;
+
     /**
      * The following parameters are optional input
      */
