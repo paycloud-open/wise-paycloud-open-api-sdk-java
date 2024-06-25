@@ -73,4 +73,10 @@ public class DebicheckOrderQueryResponse extends OpenApiResponse {
     // Reason for verification failure, return this parameter when check_status=1
     private String debicheck_error_msg;
 
+    // Message authentication code
+    private String mac;
+
+    // Issue response code
+    private String issue_resp_code;
+
 }
