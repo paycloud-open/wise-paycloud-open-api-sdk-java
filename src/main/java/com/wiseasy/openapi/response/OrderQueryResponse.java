@@ -107,4 +107,11 @@ public class OrderQueryResponse extends OpenApiResponse {
     // Transaction error message, this parameter appears when trans_status = 1
     private String trans_error_msg;
 
+    // The currency of the amount settled to the merchant. This parameter is returned when trans_status=2.
+    private String settlement_currency;
+
+    // The transaction amount converted into the settlement currency. This parameter is returned when trans_status=2
+    private Double settlement_trans_amount;
+
+
 }

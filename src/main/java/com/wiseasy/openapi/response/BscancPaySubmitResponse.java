@@ -65,4 +65,10 @@ public class BscancPaySubmitResponse extends OpenApiResponse {
     // Payment platform serial number
     private String pay_platform_trans_no;
 
+    // The currency of the amount settled to the merchant. This parameter is returned when trans_status=2.
+    private String settlement_currency;
+
+    // The transaction amount converted into the settlement currency. This parameter is returned when trans_status=2
+    private Double settlement_trans_amount;
+
 }
