@@ -1,6 +1,8 @@
 
 package com.wiseasy.openapi.sign;
 
+import com.wiseasy.openapi.utils.Base64;
+
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;

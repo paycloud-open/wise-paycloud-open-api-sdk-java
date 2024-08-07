@@ -89,12 +89,12 @@ public class OpenApiClient {
         requestParams.put(Constants.SIGN, SignHandler.sign(appRsaPrivateKey, requestParams));
 
         // Request gateway server Rest api
-        String apiUrl = gatewayUrl + Constants.API_ENTRY_URL;
+        String apiUrl = gatewayUrl.contains(Constants.API_ENTRY_URL) ? gatewayUrl : gatewayUrl + Constants.API_ENTRY_URL;
         String resultStr;
         try {
             log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());
 
-            resultStr = HttpClientUtil.doPost(apiUrl, reqHeaders, requestParams);
+            resultStr = HttpClientUtil.doPostJson(apiUrl, reqHeaders, requestParams);
 
             log.info("Response from gateway[" + apiUrl + "] receive data [Http-Request-Psn = " + httpRequestPsn + "] <<-- " + resultStr);
         } catch (Exception e) {

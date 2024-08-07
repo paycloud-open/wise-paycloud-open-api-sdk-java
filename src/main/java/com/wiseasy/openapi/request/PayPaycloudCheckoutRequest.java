@@ -37,10 +37,6 @@ public class PayPaycloudCheckoutRequest extends OpenApiRequest<PayPaycloudChecko
     // Order payment timeout period, after which the order can no longer be paid or cancelled and the order will be closed, the unit of this time is: second
     private Integer expires;
 
-    /**
-     * The following parameters are optional input
-     */
-
     // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
     // and facilitate merchants to conduct reconciliation and management
     private String store_no;
@@ -57,6 +53,12 @@ public class PayPaycloudCheckoutRequest extends OpenApiRequest<PayPaycloudChecko
 
     // Terminal IP Address
     private String term_ip;
+
+    // Address location of the device: longitude
+    private String longitude;
+
+    // Address location of the device: latitude
+    private String latitude;
 
     // To specify certain payment options, the AddPay checkout will only display the corresponding payment methods to the user. If this parameter is not set, all payment options
     // already enabled by the merchant will be displayed. Please refer to the PayOption for the enumeration values of payment options. Multiple values should be separated by commas.

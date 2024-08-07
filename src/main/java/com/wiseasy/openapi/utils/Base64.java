@@ -4,7 +4,7 @@
  * @Date: 2021/6/3 16:40
  * @Description: Base64 encoding tools
  */
-package com.wiseasy.openapi.sign;
+package com.wiseasy.openapi.utils;
 
 public final class Base64 {
 

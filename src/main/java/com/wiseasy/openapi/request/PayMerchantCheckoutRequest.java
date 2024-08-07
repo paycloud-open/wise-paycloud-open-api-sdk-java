@@ -40,10 +40,6 @@ public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantChecko
     //Bank card payment details. Please encrypt the card_info using PayCloud's public key "gateway_rsa_public_key". Convert the card to a string first, then encrypt the entire string.
     private String card;
 
-    /**
-     * The following parameters are optional input
-     */
-
     // Merchant store identification code, which can be added through the merchant platform, used to record merchant transaction data in a more detailed dimension,
     // and facilitate merchants to conduct reconciliation and management
     private String store_no;
@@ -60,5 +56,11 @@ public class PayMerchantCheckoutRequest extends OpenApiRequest<PayMerchantChecko
 
     // Terminal IP Address
     private String term_ip;
+
+    // Address location of the device: longitude
+    private String longitude;
+
+    // Address location of the device: latitude
+    private String latitude;
 
 }

@@ -27,6 +27,9 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // Payment method category
     private String pay_method_category;
 
+    // pay_scenario
+    private String pay_scenario;
+
     // Payment Method ID
     private String pay_method_id;
 
@@ -82,7 +85,7 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     private String api_version;
 
     // When refund or void a transaction, does the store manager role need to authorize this operation on the terminal?
-    private Integer required_terminal_authentication;
+    private Boolean required_terminal_authentication;
 
 
 }
