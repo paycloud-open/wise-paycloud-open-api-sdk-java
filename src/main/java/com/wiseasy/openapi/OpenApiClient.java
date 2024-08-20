@@ -89,7 +89,7 @@ public class OpenApiClient {
         requestParams.put(Constants.SIGN, SignHandler.sign(appRsaPrivateKey, requestParams));
 
         // Request gateway server Rest api
-        String apiUrl = gatewayUrl.contains(Constants.API_ENTRY_URL) ? gatewayUrl : gatewayUrl + Constants.API_ENTRY_URL;
+        String apiUrl = gatewayUrl.contains(Constants.API_ENTRY_URL) ? gatewayUrl : gatewayUrl.endsWith("/") ? gatewayUrl + Constants.API_ENTRY_URL : gatewayUrl + "/" + Constants.API_ENTRY_URL;
         String resultStr;
         try {
             log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());
@@ -156,7 +156,7 @@ public class OpenApiClient {
         fileMap.put("file_data", fileBody);
 
         // Request gateway server Rest api
-        String apiUrl = gatewayUrl + Constants.API_FILE_UPLOAD_URL;
+        String apiUrl = gatewayUrl.contains(Constants.API_ENTRY_URL) ? gatewayUrl : gatewayUrl.endsWith("/") ? gatewayUrl + Constants.API_FILE_UPLOAD_URL : gatewayUrl + "/" + Constants.API_FILE_UPLOAD_URL;
         String resultStr;
         try {
             log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());

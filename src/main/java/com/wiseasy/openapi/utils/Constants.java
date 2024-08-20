@@ -69,7 +69,7 @@ public class Constants {
 
     public static final String VERIFY_SIGNATURE_FAILED = "CLI004";
 
-    public static final String API_ENTRY_URL = "/api/entry";
-    public static final String API_FILE_UPLOAD_URL = "/api/file/upload";
+    public static final String API_ENTRY_URL = "api/entry";
+    public static final String API_FILE_UPLOAD_URL = "api/file/upload";
 
 }
