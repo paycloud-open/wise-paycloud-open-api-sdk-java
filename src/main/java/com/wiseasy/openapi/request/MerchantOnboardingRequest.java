@@ -125,4 +125,9 @@ public class MerchantOnboardingRequest extends OpenApiRequest<MerchantOnboarding
     // Payment channel ID
     private String pay_channel_id;
 
+    // Merchant Settlement Electronic Account Status
+    // 1 - Normal status
+    // 2 - Frozen status, settlement will be suspended
+    private String e_account_status;
+
 }
