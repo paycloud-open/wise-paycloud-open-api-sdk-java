@@ -136,4 +136,4 @@ Icon
 !**/wrapper/*.jar
 /module-cashier-wpos/src/main/resources/gb-config.xml
 
-/test/
+/*.Test.java
