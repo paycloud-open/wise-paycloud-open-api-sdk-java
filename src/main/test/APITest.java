@@ -159,7 +159,7 @@ public class APITest {
         request.setLongitude("22.9375");
         JSONObject card = new JSONObject();
         card.put("card_type", "CREDIT");
-        card.put("pan", "4895749143709709");
+        card.put("pan", "489574914370970900000");
         card.put("expiry", "1224");
         card.put("cvv", "1224");
         card.put("holder", "jack");
@@ -412,6 +412,232 @@ public class APITest {
         request.setSerial_no("DC0000000296000");
 
         DebicheckOrderQueryResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void RegisterMerchant() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        MerchantOnboardingRequest request = new MerchantOnboardingRequest();
+        request.setInstitution_no("1000122780");
+        request.setOut_merchant_no("M20240828-001");
+        request.setMerchant_name("Real Madrid");
+        request.setMerchant_full_name("Real Madrid Football Club in Spain");
+        request.setMerchant_type("Enterprise");
+        request.setRegistration_certificate_number("CYUQI0017816XXX");
+        request.setRegistration_certificate_date("2036-12-31");
+        request.setPrincipal_name("Florentino");
+        request.setPrincipal_id_number("X907819919011");
+        request.setPrincipal_certificate_date("2048-12-31");
+        request.setMcc("7941");
+        request.setCountry("ZAF");
+        request.setAddress_detail("123 Long Street, Cape Town");
+        request.setSales_employee_email("sales@rm.com");
+        request.setBusiness_type("Both");
+        request.setContact_name("Raul");
+        request.setContact_email("raul@rm.com");
+        request.setContact_phone("264 127615167");
+        request.setCreate_super_admin(true);
+        request.setOut_store_no("S00001");
+        request.setStore_name("Bernabeu Stadium");
+        request.setStore_address_detail("Avenida de Concha Espina, 1, 28036 Madrid");
+        request.setTerminal_sn("P52024082800001");
+        request.setDebit_rate("1.2");
+        request.setCredit_rate("1.5");
+        request.setOpen_vat(true);
+        request.setOpen_settle(true);
+        request.setSettlement_cycle("T+1");
+        request.setAccount_no("07187618891");
+        request.setAccount_holder("Zidane");
+        request.setAccount_branch("Standard Bank");
+        request.setMid("67871986171901690");
+        request.setTid("00007818");
+        request.setStatus(1);
+
+        MerchantOnboardingResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void MerchantQuery() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        MerchantQueryRequest request = new MerchantQueryRequest();
+        request.setInstitution_no("100012278");
+        request.setOut_merchant_no("M20240828-001111");
+
+        MerchantQueryResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void QueryTerminal() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        TerminalQueryRequest request = new TerminalQueryRequest();
+        request.setInstitution_no("100012278");
+        request.setMerchant_no("302400018677");
+        request.setPage_num(1);
+        request.setPage_size(20);
+
+        TerminalQueryResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void DeleteTerminal() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        TerminalDeleteRequest request = new TerminalDeleteRequest();
+        request.setInstitution_no("100012278");
+        request.setMerchant_no("302400018677");
+        request.setTerminal_sn("P52024082800001");
+
+        TerminalDeleteResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void TransSummarize() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        ReconcileTransSummarizeRequest request = new ReconcileTransSummarizeRequest();
+        request.setMerchant_no("302400015121");
+        request.setTerminal_sn("PP35272203002342");
+        request.setPrice_currency("ZAR");
+        request.setTime_start("2024--08-15 12:48:51");
+        request.setTime_end("2024-08-23 12:48:51");
+        request.setPay_method_id("Visa");
+
+        ReconcileTransSummarizeResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+
+    @Test
+    public void TransDetail() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        ReconcileTransDetailsRequest request = new ReconcileTransDetailsRequest();
+        request.setMerchant_no("302400015121");
+        request.setTerminal_sn("PP35272203002342");
+        request.setPrice_currency("ZAR");
+        request.setTime_start("2024-08-15 12:48:51");
+        request.setTime_end("2024-08-23 12:48:51");
+        request.setPay_method_id("Visa");
+        request.setPage_num(1);
+        request.setPage_size(20);
+
+        ReconcileTransDetailsResponse response;
         try {
             // Execute the request
             response = openapiClient.execute(request);
