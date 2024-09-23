@@ -66,9 +66,6 @@ public class MerchantOnboardingQatarRequest extends OpenApiRequest<MerchantOnboa
     // Store Address
     private String store_address_detail;
 
-    // Pos SN
-    private String terminal_sn;
-
     // Type of Opened Channels
     private String cp_channel_type;
 
@@ -78,10 +75,10 @@ public class MerchantOnboardingQatarRequest extends OpenApiRequest<MerchantOnboa
     // Merchant MID assigned by QNB(Exclusive to Amex)
     private String amex_mid;
 
-    // Bank Acquiring Terminal Number
-    private String tid;
-
     // Supported transaction types
     private String support_trans_type_list;
+
+    // Terminal list
+    private String terminal_list;
 
 }
