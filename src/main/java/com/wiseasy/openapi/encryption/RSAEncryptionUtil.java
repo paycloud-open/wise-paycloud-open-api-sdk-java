@@ -20,7 +20,7 @@ import java.security.spec.X509EncodedKeySpec;
  * @version 1.1
  * @since 1.0
  */
-public abstract class EncryptionHandler {
+public abstract class RSAEncryptionUtil {
     /** RSA algorithm */
     public static final String KEY_ALGORITHM = "RSA";
 
