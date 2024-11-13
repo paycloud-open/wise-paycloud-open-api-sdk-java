@@ -1,4 +1,5 @@
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wiseasy.openapi.OpenApiClient;
 import com.wiseasy.openapi.OpenApiException;
@@ -11,7 +12,9 @@ public class APITest {
     private static final String APP_RSA_PRIVATE_KEY = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqYYFrbdXFhOv3zEo4fmORUmYKsadE/QMJhD5kGzthsfwvMoqJHzN41rrGWOp4ljL64elsd2amgnEkWi8ImtV9hS4IKLft/Lq0oP5OBUvbqldaG6KX5wjq7Q11W7Ec5/tSX0IdAtV++UaO/IJyydn2JNZjspeSxbUuE+cymGs9sXtO5s5wRQmeJWv3VhDzQMj8N0ptD2dVvoFkKZ7lbnpNo9ULwAn2oVQgLrmEv/R+TEZPiAcCIhcez4eimY9i6ucTcj4I9liUeTgydAnNAesQZDCt3qQyfl8EZvfWtCUVVbin4uiYsxbzcFSW3q0q27fLsruPRGf+XHnjbR4438MpAgMBAAECggEAMo4YDr5abe9Q7QgLBdRKyvX+HTI1hbzlR8+bi6yg5A4h3AdNH/7IERT1+qCrgfhfTB34WxzaspGF7Nltl0oKCuKXlAgw+0bAR5R1oMTli1px7OTCS/xbowmPssDwPrl+0yQ8w8rxemmQzCCUvGa0a9rmWlLFsuFDL1bshRDA0V73/RB+GG2GtYQFwcu9RgbWcb8YUXBkck7UccGfSoLhtiiDISYTcQy7FQUZHXrr/v6BapG/oVp0PXwIyglw44rHFbpAQVFZw7SzEJcJmLj3PPZkzTGOEPB1b+4Mv0jQszKx+O2whbziXoZGaBWW7jsozi07f0+xom8vWUOd0GhgWQKBgQD97kSx4U2PlnCOvVjHAXWAqBmw2L4gngoCQndWZTTx95nAX4OUUKljWWJhC1/9x/21l52SZhO3q/TAgHON42zIf/1PSDaUuhTATAqrHCgudpRTVd9X1bvJItXNvmbLKkb2hXUPnrd2DxasZI8YAgp6CJFmH+g5plrKF90y1JahowKBgQCrxPEO1CpG/Xso7PuW9fqdz+wS2F6S9UXFm4V0+CcL49ieCY7ImOFtXsTJjQrZEQE7DhONjic07Xd1xlyFjY6RJ5FlFSPGoU3rmbaDKPvcK65nNaH/Nf8V1iWZqTl5Cg4jKboNRilVtAcF+hJNC7jmOdk/kxLDLobxN7XYiiUMwwKBgQCNSrDqkUTI6pqCshTd1o/9IIv6/P79wzIqg7VHW1UUdgMVKZBbTG6UGz5EZUHqQgeHrW898JJ0Frg/DLo/bxYukhjurm3AX7IANc+R2j75a32oyRVXGFQ+3KU+r/0ees21ihjSsiu/AzJIhkOgxjHyKSZOPt7GhSvrW0/3YpbWJQKBgGBJ3F/Vq4V0HxBIGJj9dun0XoAJ7qou+FfX4K47VZgit5GQBgyJNwVadLIPcJ9SGwCB2ZAmue+/lpHdCoyLV/oi1ix190Intkh2OIu588XubqvIsvEf0cjp7NYAuQkTC+3GPFeolw9GBhHhp1StV48nqpMq3P+xG1ApTLUAa9iFAoGAQrbQRkq3TIbsTYIpxE5kM5fgHaaHlcg6qoiLzHuEidWXVa3PssJQnJs5jKGFcErWjn3o3ttfrllk3mm5MzJCChse9a54/KifNhCeDcCQHl/+WPswRBjYz5rw5XJacmz7S8rd7JEEXT2fY3uv47ey4N9CZaWw+Y0UzQ8MeAAJ5jY=";
     private static final String GATEWAY_RSA_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2m4nkQKyQAxJc8VVsz/L6qVbtDWRTBolUK8Dwhi9wH6aygA6363PVNEPM8eRI5W19ssCyfdtNFy6DRAureoYV053ETPUefEA5bHDOQnjbb9PuNEfT651v8cqwEaTptaxj2zujsWI8Ad3R50EyQHsskQWms/gv2aB36XUM4vyOIk4P1f3dxtqigH0YROEYiuwFFqsyJuNSjJzNbCmfgqlQv/+pE/pOV9MIQe0CAdD26JF10QpSssEwKgvKvnXPUynVu09cjSEipev5cLJSApKSDZxrRjSFBXrh6nzg8JK05ehkI8wdsryRUneh0PGN0PgYLP/wjKiqlgTJaItxnb/JQIDAQAB";
     private static final String APP_ID = "wz715fc0d10ee9d156";
-    private static final String SANDBOX_GATEWAY_URL = "https://wiseasy-open.sg.wisepaycloud.com";
+    private static final String SANDBOX_GATEWAY_URL = "https://gw-hk.wisepaycloud.com/";
+
+    private static final String SG_SANDBOX_GATEWAY_URL = "https://wiseasy-open.sg.wisepaycloud.com";
 
     @Test
     public void ECROrderSale() {
@@ -637,6 +640,137 @@ public class APITest {
         request.setPage_size(20);
 
         ReconcileTransDetailsResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void RegisterMerchantV2() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SG_SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        MerchantOnboardingV2Request request = new MerchantOnboardingV2Request();
+        request.setInstitution_no("100012278");
+        request.setOut_merchant_no("M20240828-002");
+        request.setMerchant_name("Luxeed");
+        request.setMerchant_full_name("Chery Automobile Co., Ltd.");
+        request.setMerchant_type("Enterprise");
+        request.setRegistration_certificate_number("B123456789");
+        request.setRegistration_certificate_date("2039-12-31");
+        request.setPrincipal_name("Yin Tongyue");
+        request.setPrincipal_id_number("513022198671812571");
+        request.setPrincipal_certificate_date("2059-10-31");
+        request.setMcc("5511");
+        request.setCountry("ZAF");
+        request.setCity("Mafikeng");
+        request.setAddress_detail("123 Nelson Mandela Drive");
+        request.setSales_employee_email("merchantonboarding@addpay.africa");
+        request.setBusiness_type("Both");
+        request.setContact_name("Leeka Jin");
+        request.setContact_email("leeka@gmail.com");
+        request.setContact_phone("27 820000000");
+        request.setCreate_super_admin(true);
+
+        JSONArray store_list = new JSONArray();
+        JSONObject store_obj = new JSONObject();
+        store_obj.put("out_store_no", "S100001");
+        store_obj.put("store_name", "New York Times Square Flagship Store");
+        store_obj.put("store_address_detail", "1235 Broadway New York, NY 10001");
+        JSONArray terminal_list = new JSONArray();
+        JSONObject terminal_obj = new JSONObject();
+        terminal_obj.put("terminal_sn", "P52024082800001");
+        terminal_list.add(terminal_obj);
+        JSONObject terminal_obj2 = new JSONObject();
+        terminal_obj2.put("terminal_sn", "P72024082800001");
+        terminal_list.add(terminal_obj2);
+        JSONObject terminal_obj3 = new JSONObject();
+        terminal_obj3.put("terminal_sn", "P72024082800002");
+        terminal_list.add(terminal_obj3);
+        store_obj.put("terminal_list", terminal_list);
+        store_list.add(store_obj);
+        request.setStore_list(store_list.toJSONString());
+
+        JSONObject settlement = new JSONObject();
+        settlement.put("is_settle_by_paycloud", true);
+        settlement.put("settlement_mode", 1);
+        JSONObject settlement_account = new JSONObject();
+        settlement_account.put("account_no", "1007651671");
+        settlement_account.put("account_holder", "jossei");
+        settlement_account.put("account_branch", "African Bank");
+        settlement.put("settlement_account", settlement_account);
+        request.setSettlement(settlement.toJSONString());
+
+        request.setOpen_vat(true);
+
+        JSONArray acquiring_contract_list = new JSONArray();
+        JSONObject acquiring_contract_obj = new JSONObject();
+        acquiring_contract_obj.put("pay_channel_id", "PC0132ZAF");
+        acquiring_contract_obj.put("settlement_cycle", "T+1");
+        acquiring_contract_obj.put("mdr_id", "100000");
+        acquiring_contract_list.add(acquiring_contract_obj);
+
+        JSONObject acquiring_contract_obj2 = new JSONObject();
+        acquiring_contract_obj2.put("pay_channel_id", "PC0121ZAF");
+        acquiring_contract_obj2.put("settlement_cycle", "T+1");
+        acquiring_contract_obj2.put("mdr_id", "100000");
+
+        JSONArray merchant_parameter_list = new JSONArray();
+        JSONObject merchant_parameter_obj = new JSONObject();
+        merchant_parameter_obj.put("param_key", "pc_merchant_no");
+        merchant_parameter_obj.put("param_value", "000016177618901");
+        merchant_parameter_list.add(merchant_parameter_obj);
+        acquiring_contract_obj2.put("merchant_parameter_list", merchant_parameter_list);
+
+        JSONArray terminal_parameter_list = new JSONArray();
+        JSONObject terminal_parameter_obj = new JSONObject();
+        terminal_parameter_obj.put("terminal_sn", "P52024082800001");
+        terminal_parameter_obj.put("param_key", "pc_terminal_no");
+        terminal_parameter_obj.put("param_value", "78718967");
+        terminal_parameter_list.add(terminal_parameter_obj);
+        JSONObject terminal_parameter_obj2 = new JSONObject();
+        terminal_parameter_obj2.put("terminal_sn", "P72024082800001");
+        terminal_parameter_obj2.put("param_key", "pc_terminal_no");
+        terminal_parameter_obj2.put("param_value", "78718960");
+        terminal_parameter_list.add(terminal_parameter_obj2);
+        JSONObject terminal_parameter_obj3 = new JSONObject();
+        terminal_parameter_obj3.put("terminal_sn", "P72024082800002");
+        terminal_parameter_obj3.put("param_key", "pc_terminal_no");
+        terminal_parameter_obj3.put("param_value", "78718961");
+        terminal_parameter_list.add(terminal_parameter_obj3);
+        acquiring_contract_obj2.put("terminal_parameter_list", terminal_parameter_list);
+
+        acquiring_contract_list.add(acquiring_contract_obj2);
+        request.setAcquiring_contract_list(acquiring_contract_list.toJSONString());
+
+        JSONArray payment_app_list = new JSONArray();
+        JSONObject payment_app_obj = new JSONObject();
+        payment_app_obj.put("app_id", "wzac09fb2b0ad16b28");
+        payment_app_list.add(payment_app_obj);
+        JSONObject payment_app_obj2 = new JSONObject();
+        payment_app_obj2.put("app_id", "wz08f13a49cb8d59a1");
+        payment_app_list.add(payment_app_obj2);
+        request.setPayment_app_list(payment_app_list.toJSONString());
+
+        request.setStatus(1);
+        request.setE_account_status(1);
+
+        MerchantOnboardingV2Response response;
         try {
             // Execute the request
             response = openapiClient.execute(request);
