@@ -18,6 +18,9 @@ public class MerchantOnboardingV2Request extends OpenApiRequest<MerchantOnboardi
     // Institution no.
     private String institution_no;
 
+    // Merchant no.
+    private String merchant_no;
+
     // Third-party merchant number
     private String out_merchant_no;
 

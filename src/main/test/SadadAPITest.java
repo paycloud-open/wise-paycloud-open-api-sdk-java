@@ -3,8 +3,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wiseasy.openapi.OpenApiClient;
 import com.wiseasy.openapi.OpenApiException;
-import com.wiseasy.openapi.request.MerchantOnboardingQatarRequest;
-import com.wiseasy.openapi.response.MerchantOnboardingQatarResponse;
+import com.wiseasy.openapi.request.*;
+import com.wiseasy.openapi.response.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,8 +19,8 @@ public class SadadAPITest {
     @Before
     public void init() {
         // 设置全局 SOCKS 代理
-        System.setProperty("socksProxyHost", "127.0.0.1");
-        System.setProperty("socksProxyPort", "10808");
+        //System.setProperty("socksProxyHost", "127.0.0.1");
+        //System.setProperty("socksProxyPort", "10808");
     }
 
     @Test
@@ -87,4 +87,145 @@ public class SadadAPITest {
         // Write your business code based on the API response ......
         // @TODO
     }
+
+    @Test
+    public void ECROrderSale() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        WisehubCloudPayOrderRequest request = new WisehubCloudPayOrderRequest();
+        request.setMerchant_no("302400004438");
+        request.setStore_no("4024000040");
+        request.setTerminal_sn("WPYB002349002550");
+        request.setPrice_currency("QAR");
+        request.setMessage_receiving_application("SADAD POS");
+        request.setPay_scenario("SWIPE_CARD");
+        request.setOrder_amount(502.34);
+        request.setTrans_type(3);
+        request.setOrig_merchant_order_no("TEST_1731578873757");
+        request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
+        request.setDescription("IPhone 12 5G White");
+        request.setAttach("{\"key\":\"value\"}");
+        request.setNotify_url("https://m.website.com/pay/notify");
+        request.setExpires(300);
+        request.setReject_trade_when_terminal_offline(false);
+        request.setRequired_terminal_authentication(false);
+        request.setApi_version("2.0");
+
+        // Build a response object
+        WisehubCloudPayOrderResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void ECROrderClose() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        WisehubCloudPayCloseRequest request = new WisehubCloudPayCloseRequest();
+        request.setMerchant_no("302400004438");
+        request.setStore_no("4024000040");
+        request.setTerminal_sn("WPYB002349002550");
+        request.setMessage_receiving_application("SADAD POS");
+        request.setMerchant_order_no("TEST_1731578873757");
+        request.setDescription("Cancel");
+
+        WisehubCloudPayCloseResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void OrderQuery() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        OrderQueryRequest request = new OrderQueryRequest();
+        request.setMerchant_no("302400004438");
+        request.setMerchant_order_no("TEST_1731578873757001");
+
+        OrderQueryResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
+    @Test
+    public void RefundQuery() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        OrderRefundQueryRequest request = new OrderRefundQueryRequest();
+        request.setMerchant_no("302400004438");
+        request.setMerchant_order_no("TEST_1731578873757001001");
+
+        OrderRefundQueryResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+    }
+
 }

@@ -11,12 +11,14 @@ com\wiseasy\openapi\response\BscancPaySubmitResponse.class
 com\wiseasy\openapi\response\CustomsDeclarationResponse.class
 com\wiseasy\openapi\response\OrderRefundSubmitResponse.class
 com\wiseasy\openapi\utils\HttpClientUtil$1.class
+com\wiseasy\openapi\encryption\AESEncryptionUtil.class
 com\wiseasy\openapi\request\MerchantOnboardingRequest.class
 com\wiseasy\openapi\request\TerminalDeleteRequest.class
 com\wiseasy\openapi\response\PayMiniprogramOrderResponse.class
 com\wiseasy\openapi\response\ReconcileTransDetailsResponse.class
 com\wiseasy\openapi\request\OrderRefundSubmitRequest.class
 com\wiseasy\openapi\response\TerminalQueryResponse.class
+com\wiseasy\openapi\encryption\RSAEncryptionUtil.class
 com\wiseasy\openapi\request\DebicheckOrderQueryRequest.class
 com\wiseasy\openapi\request\TerminalQueryRequest.class
 com\wiseasy\openapi\response\OpenApiResponse.class
@@ -27,7 +29,6 @@ com\wiseasy\openapi\OpenApiClient.class
 com\wiseasy\openapi\request\PayInappOrderRequest.class
 com\wiseasy\openapi\request\PayMiniprogramOrderRequest.class
 com\wiseasy\openapi\request\DebicheckOrderCreateRequest.class
-com\wiseasy\openapi\encryption\EncryptionHandler.class
 com\wiseasy\openapi\response\WisehubCloudPayOrderResponse.class
 com\wiseasy\openapi\request\AutoDebitCancelRequest.class
 com\wiseasy\openapi\response\ExchageRateGetResponse.class
@@ -52,6 +53,7 @@ com\wiseasy\openapi\request\PayMerchantCheckoutRequest.class
 com\wiseasy\openapi\response\MerchantQueryResponse.class
 com\wiseasy\openapi\response\OrderRevokerResponse.class
 com\wiseasy\openapi\response\WisehubCloudMessageSendResponse.class
+com\wiseasy\openapi\response\MerchantOnboardingV2Response.class
 com\wiseasy\openapi\request\OrderQueryRequest.class
 com\wiseasy\openapi\response\AlipayplusBrandQueryResponse.class
 com\wiseasy\openapi\response\DebicheckOrderCreateResponse.class
@@ -79,6 +81,7 @@ com\wiseasy\openapi\response\OrderRefundQueryResponse.class
 com\wiseasy\openapi\request\PayFeeGetRequest.class
 com\wiseasy\openapi\request\WisehubCloudPayOrderRequest.class
 com\wiseasy\openapi\utils\Constants.class
+com\wiseasy\openapi\request\MerchantOnboardingV2Request.class
 com\wiseasy\openapi\request\PayBillDownloadRequest.class
 com\wiseasy\openapi\utils\HttpClientUtil$2.class
 com\wiseasy\openapi\request\PayEntrycodeRequest.class
