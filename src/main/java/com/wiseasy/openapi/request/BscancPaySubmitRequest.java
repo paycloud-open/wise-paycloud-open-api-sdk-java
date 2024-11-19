@@ -74,4 +74,7 @@ public class BscancPaySubmitRequest extends OpenApiRequest<BscancPaySubmitRespon
     // extended parameter
     private String ext_params;
 
+    // WeChat Official Account APP ID
+    private String sub_appid;
+
 }

@@ -72,4 +72,7 @@ public class CscanbPayGetqrcodeRequest extends OpenApiRequest<CscanbPayGetqrcode
     // extended parameter
     private String ext_params;
 
+    // WeChat Official Account APP ID
+    private String sub_appid;
+
 }
