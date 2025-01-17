@@ -91,5 +91,11 @@ public class PayUnifiedorderRequest extends OpenApiRequest<PayUnifiedorderRespon
     // extended parameter
     private String ext_params;
 
+    // Address location of the device: longitude
+    private String longitude;
+
+    // Address location of the device: latitude
+    private String latitude;
+
 
 }

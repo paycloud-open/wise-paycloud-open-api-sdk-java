@@ -70,4 +70,13 @@ public class PayInappOrderRequest extends OpenApiRequest<PayInappOrderResponse> 
     // extended parameter
     private String ext_params;
 
+    // Terminal IP Address
+    private String term_ip;
+
+    // Address location of the device: longitude
+    private String longitude;
+
+    // Address location of the device: latitude
+    private String latitude;
+
 }

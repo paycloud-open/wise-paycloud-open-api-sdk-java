@@ -33,6 +33,9 @@ public class MerchantOnboardingQatarRequest extends OpenApiRequest<MerchantOnboa
     // Nature of Business
     private String business_nature;
 
+    // Payment Facilitator ID
+    private String payment_facilitator_id;
+
     // Merchant Category
     private String mcc;
 

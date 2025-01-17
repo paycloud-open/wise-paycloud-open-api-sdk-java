@@ -36,6 +36,7 @@ public class SadadAPITest {
         request.setLegal_name("ChangAn Avita lnc.");
         request.setBusiness_type("Car");
         request.setBusiness_nature("Car Nature");
+        request.setPayment_facilitator_id("10001388818");
         request.setMcc("0742");
         request.setContact_name("zhangsan");
         request.setContact_email("zhangsan@qq.com");
@@ -91,7 +92,7 @@ public class SadadAPITest {
     @Test
     public void ECROrderSale() {
         // Instantiate a client
-        OpenApiClient openapiClient = new OpenApiClient(APP_ID, SANDBOX_GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, GATEWAY_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
 
         // Build a request object, set parameters
         WisehubCloudPayOrderRequest request = new WisehubCloudPayOrderRequest();
@@ -101,8 +102,8 @@ public class SadadAPITest {
         request.setPrice_currency("QAR");
         request.setMessage_receiving_application("SADAD POS");
         request.setPay_scenario("SWIPE_CARD");
-        request.setOrder_amount(502.34);
-        request.setTrans_type(3);
+        request.setOrder_amount(66.33);
+        request.setTrans_type(1);
         request.setOrig_merchant_order_no("TEST_1731578873757");
         request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
         request.setDescription("IPhone 12 5G White");
