@@ -87,5 +87,7 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     // When refund or void a transaction, does the store manager role need to authorize this operation on the terminal?
     private Boolean required_terminal_authentication;
 
+    // If the merchant is a gas station, please use this parameter to set specific product information for the gas station. forecourtData is an array
+    private String forecourtData;
 
 }
