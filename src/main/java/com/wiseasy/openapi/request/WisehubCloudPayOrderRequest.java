@@ -88,6 +88,6 @@ public class WisehubCloudPayOrderRequest extends OpenApiRequest<WisehubCloudPayO
     private Boolean required_terminal_authentication;
 
     // If the merchant is a gas station, please use this parameter to set specific product information for the gas station. forecourtData is an array
-    private String forecourtData;
+    private String forecourt_data;
 
 }
