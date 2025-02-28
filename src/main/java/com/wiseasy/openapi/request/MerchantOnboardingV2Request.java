@@ -60,6 +60,9 @@ public class MerchantOnboardingV2Request extends OpenApiRequest<MerchantOnboardi
     // Address
     private String address_detail;
 
+    // ZIP Code
+    private String zip_code;
+
     // Sales Email Address
     private String sales_employee_email;
 
