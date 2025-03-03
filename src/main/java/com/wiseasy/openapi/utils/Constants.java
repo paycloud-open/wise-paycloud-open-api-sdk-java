@@ -25,6 +25,8 @@ public class Constants {
     // Sign
     public static final String SIGN = "sign";
 
+    public static final String AUTHORIZATION = "Authorization";
+
     // The time to send the request cannot exceed 15 minutes before and after the standard time
     public static final String TIMESTAMP = "timestamp";
 
@@ -36,6 +38,9 @@ public class Constants {
 
     // Algorithm type: RSA
     public static final String SIGN_TYPE_RSA2 = "RSA2";
+
+    // Algorithm type: NONE
+    public static final String SIGN_TYPE_NONE = "NONE";
 
     // Version
     public static final String VERSION = "version";
@@ -69,7 +74,10 @@ public class Constants {
 
     public static final String VERIFY_SIGNATURE_FAILED = "CLI004";
 
+    public static final String PARAMETER_IS_ERROR = "CLI005";
+
     public static final String API_ENTRY_URL = "api/entry";
     public static final String API_FILE_UPLOAD_URL = "api/file/upload";
+
 
 }

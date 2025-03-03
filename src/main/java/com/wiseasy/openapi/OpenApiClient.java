@@ -6,8 +6,10 @@ import com.wiseasy.openapi.request.FileUploadRequest;
 import com.wiseasy.openapi.request.OpenApiRequest;
 import com.wiseasy.openapi.response.FileUploadResponse;
 import com.wiseasy.openapi.response.OpenApiResponse;
+import com.wiseasy.openapi.sign.Base64;
 import com.wiseasy.openapi.sign.SignHandler;
 import com.wiseasy.openapi.utils.Constants;
+import com.wiseasy.openapi.utils.EAuthType;
 import com.wiseasy.openapi.utils.FileUtil;
 import com.wiseasy.openapi.utils.HttpClientUtil;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -52,11 +54,30 @@ public class OpenApiClient {
      */
     private String gatewayRsaPublicKey;
 
+    /**
+     * The username of the basic authentication, which is used to access the gateway server
+     */
+    private String basicAuthUsername;
+
+    /**
+     * The password of the basic authentication, which is used to access the gateway server
+     */
+    private String basicAuthPassword;
+
     public OpenApiClient(String appId, String gatewayUrl, String appRsaPrivateKey, String gatewayRsaPublicKey) {
         this.appId = appId;
         this.gatewayUrl = gatewayUrl;
         this.appRsaPrivateKey = appRsaPrivateKey;
         this.gatewayRsaPublicKey = gatewayRsaPublicKey;
+    }
+
+    public OpenApiClient(String appId, String gatewayUrl, String appRsaPrivateKey, String gatewayRsaPublicKey, String basicAuthUsername, String basicAuthPassword) {
+        this.appId = appId;
+        this.gatewayUrl = gatewayUrl;
+        this.appRsaPrivateKey = appRsaPrivateKey;
+        this.gatewayRsaPublicKey = gatewayRsaPublicKey;
+        this.basicAuthUsername = basicAuthUsername;
+        this.basicAuthPassword = basicAuthPassword;
     }
 
     /**
@@ -68,33 +89,51 @@ public class OpenApiClient {
      * @throws OpenApiException
      */
     public <T extends OpenApiResponse> T execute(OpenApiRequest<T> request) throws OpenApiException {
+        return execute(request, EAuthType.RSA2);
+    }
+
+    /**
+     * Call the internal handler function of the gateway API
+     *
+     * @param <T>
+     * @param request The request object
+     * @return Response object
+     * @throws OpenApiException
+     */
+    public <T extends OpenApiResponse> T execute(OpenApiRequest<T> request, EAuthType authType) throws OpenApiException {
         // Basic parameter check
         if (request == null) {
             throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "The parameter [request] cannot be null");
         }
-        paramsCheck();
+        paramsCheck(authType);
 
         // Convert the request OpenApiRequest to JSON
         JSONObject requestParams = JSONObject.parseObject(JSON.toJSONString(request));
 
         // Build common request parameters
-        buildCommonParameters(request, requestParams);
+        buildCommonParameters(request, requestParams, authType);
 
         // Build common request header
-        Map<String, Object> reqHeaders = new HashMap<>();
+        Map<String, Object> reqHeaders = new HashMap();
         String httpRequestPsn = genHttpRequestId();
         reqHeaders.put(Constants.HTTP_REQUEST_HEADER_PSN, httpRequestPsn);
 
-        // Signature
-        requestParams.put(Constants.SIGN, SignHandler.sign(appRsaPrivateKey, requestParams));
+        // Authorization
+        if (authType == EAuthType.RSA2) {
+            // RSA Signature
+            requestParams.put(Constants.SIGN, SignHandler.sign(appRsaPrivateKey, requestParams));
+        } else {
+            // Basic Auth
+            reqHeaders.put(Constants.AUTHORIZATION, "Basic " + Base64.encode((basicAuthUsername + ":" + basicAuthPassword).getBytes()));
+        }
 
         // Request gateway server Rest api
-        String apiUrl = gatewayUrl.contains(Constants.API_ENTRY_URL) ? gatewayUrl : gatewayUrl.endsWith("/") ? gatewayUrl + Constants.API_ENTRY_URL : gatewayUrl + "/" + Constants.API_ENTRY_URL;
+        String apiUrl = gatewayUrl.endsWith("/") ?  gatewayUrl + Constants.API_ENTRY_URL : gatewayUrl + "/" + Constants.API_ENTRY_URL;
         String resultStr;
         try {
             log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());
 
-            resultStr = HttpClientUtil.doPostJson(apiUrl, reqHeaders, requestParams);
+            resultStr = HttpClientUtil.doPost(apiUrl, reqHeaders, requestParams);
 
             log.info("Response from gateway[" + apiUrl + "] receive data [Http-Request-Psn = " + httpRequestPsn + "] <<-- " + resultStr);
         } catch (Exception e) {
@@ -104,7 +143,7 @@ public class OpenApiClient {
         JSONObject resultJson = JSONObject.parseObject(resultStr);
 
         // Verify signature
-        if (!SignHandler.verifySign(gatewayRsaPublicKey, resultJson)) {
+        if (authType == EAuthType.RSA2 && !SignHandler.verifySign(gatewayRsaPublicKey, resultJson)) {
             throw new OpenApiException(Constants.VERIFY_SIGNATURE_FAILED, "Response data signature error");
         }
 
@@ -132,7 +171,7 @@ public class OpenApiClient {
         if (request == null) {
             throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "The parameter [request] cannot be null");
         }
-        paramsCheck();
+        paramsCheck(EAuthType.RSA2);
 
         FileBody fileBody = request.getFile_body();
         if (fileBody == null) {
@@ -141,22 +180,22 @@ public class OpenApiClient {
 
         // Build common request header
         String httpRequestPsn = genHttpRequestId();
-        Map<String, Object> reqHeaders = new HashMap<>();
+        Map<String, Object> reqHeaders = new HashMap();
         reqHeaders.put(Constants.HTTP_REQUEST_HEADER_PSN, httpRequestPsn);
 
         // Convert the request OpenApiRequest to JSON
         JSONObject requestParams = JSONObject.parseObject(JSON.toJSONString(request));
         // Build common request parameters
-        buildCommonParameters(request, requestParams);
+        buildCommonParameters(request, requestParams, EAuthType.RSA2);
         requestParams.put("file_data_hash", DigestUtils.md5Hex(FileUtil.file2Byte(fileBody.getFile())));
         // Signature
         requestParams.put(Constants.SIGN, SignHandler.sign(appRsaPrivateKey, requestParams));
 
-        Map<String, FileBody> fileMap = new HashMap<>(1);
+        Map<String, FileBody> fileMap = new HashMap(1);
         fileMap.put("file_data", fileBody);
 
         // Request gateway server Rest api
-        String apiUrl = gatewayUrl.contains(Constants.API_ENTRY_URL) ? gatewayUrl : gatewayUrl.endsWith("/") ? gatewayUrl + Constants.API_FILE_UPLOAD_URL : gatewayUrl + "/" + Constants.API_FILE_UPLOAD_URL;
+        String apiUrl = gatewayUrl + Constants.API_FILE_UPLOAD_URL;
         String resultStr;
         try {
             log.info("Request to gateway[" + apiUrl + "] send data [Http-Request-Psn = " + httpRequestPsn + "] -->> " + requestParams.toJSONString());
@@ -186,27 +225,42 @@ public class OpenApiClient {
         return resp;
     }
 
-    private void paramsCheck() throws OpenApiException {
+    private void paramsCheck(EAuthType authType) throws OpenApiException {
         if (StringUtils.isBlank(appId)) {
             throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "The parameter [appId] cannot be empty");
         }
         if (StringUtils.isBlank(gatewayUrl)) {
             throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "The parameter [gatewayUrl] cannot be empty");
         }
-        if (StringUtils.isBlank(gatewayRsaPublicKey)) {
-            throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "You are using the RSA signature method,The parameter [gatewayRsaPublicKey] cannot be empty");
-        }
-        if (StringUtils.isBlank(appRsaPrivateKey)) {
-            throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "You are using the RSA signature method,The parameter [appRsaPrivateKey] cannot be empty");
+        if (authType == EAuthType.RSA2) {
+            if (StringUtils.isBlank(gatewayRsaPublicKey)) {
+                throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "You are using the RSA signature method,The parameter [gatewayRsaPublicKey] cannot be empty");
+            }
+            if (StringUtils.isBlank(appRsaPrivateKey)) {
+                throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "You are using the RSA signature method,The parameter [appRsaPrivateKey] cannot be empty");
+            }
+        } else if (authType == EAuthType.BASIC_AUTH) {
+            if (StringUtils.isBlank(basicAuthUsername)) {
+                throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "The parameter [basicAuthUsername] cannot be empty");
+            }
+            if (StringUtils.isBlank(basicAuthPassword)) {
+                throw new OpenApiException(Constants.PARAMETER_IS_EMPTY, "The parameter [basicAuthPassword] cannot be empty");
+            }
+        } else {
+            throw new OpenApiException(Constants.PARAMETER_IS_ERROR, "The parameter [authType] invalid");
         }
     }
 
-    private <T extends OpenApiResponse> void buildCommonParameters(OpenApiRequest<T> request, JSONObject requestParams) {
+    private <T extends OpenApiResponse> void buildCommonParameters(OpenApiRequest<T> request, JSONObject requestParams, EAuthType authType) {
         requestParams.put(Constants.APP_ID, appId);
         requestParams.put(Constants.METHOD, request.getRequestMethod());
         requestParams.put(Constants.FORMAT, Constants.FORMAT_JSON);
         requestParams.put(Constants.CHARSET, Constants.CHARSET_UTF8);
-        requestParams.put(Constants.SIGN_TYPE, Constants.SIGN_TYPE_RSA2);
+        if (authType == EAuthType.RSA2) {
+            requestParams.put(Constants.SIGN_TYPE, Constants.SIGN_TYPE_RSA2);
+        } else {
+            requestParams.put(Constants.SIGN_TYPE, Constants.SIGN_TYPE_NONE);
+        }
         requestParams.put(Constants.VERSION, Constants.VERSION_VALUE);
         requestParams.put(Constants.TIMESTAMP, getUTCTimeStr());
         requestParams.remove("responseClass");

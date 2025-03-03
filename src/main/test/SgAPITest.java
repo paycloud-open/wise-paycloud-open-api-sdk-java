@@ -3,6 +3,8 @@ import com.wiseasy.openapi.OpenApiClient;
 import com.wiseasy.openapi.OpenApiException;
 import com.wiseasy.openapi.request.PayUnifiedorderRequest;
 import com.wiseasy.openapi.response.PayUnifiedorderResponse;
+import com.wiseasy.openapi.utils.EAuthType;
+import org.junit.Test;
 
 public class SgAPITest {
 
@@ -21,7 +23,8 @@ public class SgAPITest {
      Please refer to the documentation for Java SDK: https://gw.paycloud.world/docs/#/javaSDK
      For other development languages and API usage methods, please browse: https://gw.paycloud.world/docs/#/?id=readme
      */
-    public static void main(String[] args) {
+    @Test
+    public void rsaAuthTest() {
         //  Instantiate the client
         OpenApiClient openapiClient = new OpenApiClient(APP_ID, TEST_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
 
@@ -41,7 +44,44 @@ public class SgAPITest {
 
         PayUnifiedorderResponse response;
         try {
-            response = openapiClient.execute(request);
+            response = openapiClient.execute(request, EAuthType.RSA2);
+        } catch (OpenApiException e) {
+            // The call failed with an error message printed
+            System.err.println();
+            System.err.println("request api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Interface failed to execute, error message printed
+            System.err.println();
+            System.err.println("api execute error:  " + JSON.toJSONString(response));
+        }
+        // Please redirect to the page shown in pay_URL, and the user will complete the remaining payment process
+        System.err.println("pay_url:  " + response.getPay_url());
+    }
+
+    @Test
+    public void basicAuthTest() {
+        //  Instantiate the client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, TEST_URL, null, GATEWAY_RSA_PUBLIC_KEY, "ub89c59013640b3820b9b0a75763ba6f3", "pb53f5de5ba9951aa24fe47e753ce3345");
+
+        //  Instantiate the request class corresponding to the specific API.
+        PayUnifiedorderRequest request = new PayUnifiedorderRequest();
+
+        //  The SDK already encapsulates the public parameters; here you only need to pass in the business parameters
+        request.setMerchant_no("332400005419");
+        request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
+        request.setPrice_currency("USD");
+        request.setTrans_amount(345.05);
+        request.setDescription("IPhone 15 5G White");
+        request.setExpires(300);
+        request.setTerm_ip("127.0.0.1");
+        request.setTerminal_type("WEB");
+        request.setPay_method_id("Coopay");
+
+        PayUnifiedorderResponse response;
+        try {
+            response = openapiClient.execute(request, EAuthType.BASIC_AUTH);
         } catch (OpenApiException e) {
             // The call failed with an error message printed
             System.err.println();
