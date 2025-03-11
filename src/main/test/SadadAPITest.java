@@ -31,8 +31,8 @@ public class SadadAPITest {
         // Build a request object, set parameters
         MerchantOnboardingQatarRequest request = new MerchantOnboardingQatarRequest();
         request.setInstitution_no("100013888");
-        request.setOut_merchant_no("SADAD-M-0091");
-        request.setMerchant_name("Avita091");
+        request.setOut_merchant_no("SADAD-M-0091-015");
+        request.setMerchant_name("Avita0915");
         request.setLegal_name("ChangAn Avita lnc.");
         request.setBusiness_type("Car");
         request.setBusiness_nature("Car Nature");
@@ -43,28 +43,28 @@ public class SadadAPITest {
         request.setContact_phone("974 1234567");
         request.setRegistration_certificate_number("HM9017191001");
         request.setAddress_detail("china beijing changan no.12");
-        request.setMdr_plan_id("100002");
-        request.setRisk_plan_id("456");
+        request.setMdr_plan_id("100012");
+        request.setRisk_plan_id("10001");
         request.setOut_store_no("SADAD-S-0091");
         request.setStore_name("Avita Beijing 0091");
         request.setStore_address_detail("china beijing changan no.12-A");
-        request.setCp_channel_type("QNB");
+        request.setPay_channel_id("PC0122QAT");
         request.setMid("178989761718171");
         request.setAmex_mid("278989761718171");
         request.setSupport_trans_type_list("[1,3]");
 
         JSONArray terminal_list = new JSONArray();
         JSONObject terminal1 = new JSONObject();
-        terminal1.put("terminal_sn", "P111111");
-        terminal1.put("tid", "T111111-11");
+        terminal1.put("terminal_sn", "P11111155");
+        terminal1.put("tid", "T1111115-115");
         terminal_list.add(terminal1);
         JSONObject terminal2 = new JSONObject();
-        terminal2.put("terminal_sn", "P111112");
-        terminal2.put("tid", "T111112-11");
+        terminal2.put("terminal_sn", "P11111255");
+        terminal2.put("tid", "T1111125-115");
         terminal_list.add(terminal2);
         JSONObject terminal3 = new JSONObject();
-        terminal3.put("terminal_sn", "P111113");
-        terminal3.put("tid", "T111113-11");
+        terminal3.put("terminal_sn", "P11111355");
+        terminal3.put("tid", "T1111135-115");
         terminal_list.add(terminal3);
         request.setTerminal_list(terminal_list.toJSONString());
 

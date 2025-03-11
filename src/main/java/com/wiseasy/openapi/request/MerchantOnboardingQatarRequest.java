@@ -69,8 +69,8 @@ public class MerchantOnboardingQatarRequest extends OpenApiRequest<MerchantOnboa
     // Store Address
     private String store_address_detail;
 
-    // Type of Opened Channels
-    private String cp_channel_type;
+    // Payment channel ID
+    private String pay_channel_id;
 
     // Bank Acquirer Merchant Number
     private String mid;
