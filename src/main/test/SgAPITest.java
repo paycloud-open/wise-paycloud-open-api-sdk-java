@@ -1,16 +1,18 @@
 import com.alibaba.fastjson.JSON;
 import com.wiseasy.openapi.OpenApiClient;
 import com.wiseasy.openapi.OpenApiException;
+import com.wiseasy.openapi.request.CscanbPayGetqrcodeRequest;
 import com.wiseasy.openapi.request.PayUnifiedorderRequest;
+import com.wiseasy.openapi.response.CscanbPayGetqrcodeResponse;
 import com.wiseasy.openapi.response.PayUnifiedorderResponse;
 import com.wiseasy.openapi.utils.EAuthType;
 import org.junit.Test;
 
 public class SgAPITest {
 
-    private static final String APP_RSA_PRIVATE_KEY = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCKIxPawWYj19KIYWU4TOd9vPjxzku+N+ncHRzS+niZY0UQ2k4CJ8nz1ptsJ0OH6dn5quLBHLkaMa4Rq5h5LMqWWf9y68ztF5W6cKF0kO9RCCYAO1Qey+A7o+/e91DpngyWIXTW8F4xc/diTBekz4gph+ppf3wR9SLaqWxPC6sHoalZHlzWYiEvYM7XGFO1R5IFe0lN/Y8zzPUvrmf+szb6uX2e2z7+c6LDWtZ27/bwjPcHzrIGiE0/1kaoMUgAJ4qFivypqC1iVxPW9N7lGVP8bMWFDHS67kMZGzBzMddhcSjMHVRNMaXgG/9ayl7g1jw2ZilpIimaROiVqGbLBZitAgMBAAECggEAbMT6GUI3vvluGV03aoGDtgpaq2wZUAqO5nc1/xqiY4U7GO4Mhr310z6k2yB/mEGXFXRtYEnRpsJ/ogJP6PpP+tuavU7W6cmsaEXPnA2To2abJYuRzT4TrmKDujlbSNjeaEiny6cxRBdgL9Jiu69+M9WFytRLSYiQjUTit8skPLjkdEgqUVkr95lFSHMNRGSkm0Zwk1f3EJK9NCEK/9WSQSPuJ4BFFcnDEldpgpEvvOEhPaZVySnQzHtruyc7eIb69rM57xAvhGpa8WfSqUTKnpDUgyYpuSMrgYRnFWhW9/fb1ztq7qC+6C3Y18nMlPd/u95+D6hLiq5Xz0eGNC5ssQKBgQD/uQT31PMGG6v4KsSs3mHoH+XHCTnk44AuuZwLa/r1Koj7mfPUdiVsS+xzMVnbfFKc7+g50hb+2Y2KUh+ky2MXU1/0go1q5vRdqKMqu4I9yJIS330TdUTZyO+sptmY4mB7pL3VgCr1YlNTXP9ijP/1PjtKxDE87G4FS4EykGxhGwKBgQCKSWuIjrjCDjk1rMgQhzx0LlrF5+8hWgi5K/cZ4AHOaQhUFZ60+Ymt4jxsOzHi8xUnozkZsXA0gye8KikZaiJP2LP87gtPB6tXfUMtlDYsCJQZebZyhP9esYrHtpljYj0MFtjd5neNGx5e2hTcYr0xEL4PAwv5nz7BfP7LorvR1wKBgBlh2v1idLDRhFNAo37pH9yzddI4tzdh4XJB2BxGHoXBMBGRKWOYSoSiUJjqeBnSED0lju5WTRQEsgjdt+hai75f9zFE2BaZT/4P5Ao0zGungeA/sKGCzU+0ox2G/igvqBX9tx3+98SdetnWbD7y8eD8yVPVf3GlohICeZN0RF2rAoGAScr8Exb2CLfGV5on+Inx/J1v2wP1W3rMBOQtLCWZUShDRXt0AWbXzW5Yh/jemhjVRR2Yrtk84wjJ/2MQI3u7a5hcE7CDYFzbVgiF/KCGd+DsBtwoO9w02bcsM36BQ8N8iCL4/xCo4yeBgWQmlaQrCS/B/AjILyCHQIEPBmOEjmkCgYEA7xayYmWgzGEgVMTuyE1d8/iNW61+JO17vOXueoo3sPoxxa3QjfFwzXNI5U3DQahOs78tvdgyXGZUwh1sAL6ZbuHU6rTsgerHXG1ApAwMQ2IsWYCUd1mSxIfirpxfLEMVEiDX66j43YJwQDSFQ9rgk75BegZi97azQx9jhwzLgVg=";
+    private static final String APP_RSA_PRIVATE_KEY = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqYYFrbdXFhOv3zEo4fmORUmYKsadE/QMJhD5kGzthsfwvMoqJHzN41rrGWOp4ljL64elsd2amgnEkWi8ImtV9hS4IKLft/Lq0oP5OBUvbqldaG6KX5wjq7Q11W7Ec5/tSX0IdAtV++UaO/IJyydn2JNZjspeSxbUuE+cymGs9sXtO5s5wRQmeJWv3VhDzQMj8N0ptD2dVvoFkKZ7lbnpNo9ULwAn2oVQgLrmEv/R+TEZPiAcCIhcez4eimY9i6ucTcj4I9liUeTgydAnNAesQZDCt3qQyfl8EZvfWtCUVVbin4uiYsxbzcFSW3q0q27fLsruPRGf+XHnjbR4438MpAgMBAAECggEAMo4YDr5abe9Q7QgLBdRKyvX+HTI1hbzlR8+bi6yg5A4h3AdNH/7IERT1+qCrgfhfTB34WxzaspGF7Nltl0oKCuKXlAgw+0bAR5R1oMTli1px7OTCS/xbowmPssDwPrl+0yQ8w8rxemmQzCCUvGa0a9rmWlLFsuFDL1bshRDA0V73/RB+GG2GtYQFwcu9RgbWcb8YUXBkck7UccGfSoLhtiiDISYTcQy7FQUZHXrr/v6BapG/oVp0PXwIyglw44rHFbpAQVFZw7SzEJcJmLj3PPZkzTGOEPB1b+4Mv0jQszKx+O2whbziXoZGaBWW7jsozi07f0+xom8vWUOd0GhgWQKBgQD97kSx4U2PlnCOvVjHAXWAqBmw2L4gngoCQndWZTTx95nAX4OUUKljWWJhC1/9x/21l52SZhO3q/TAgHON42zIf/1PSDaUuhTATAqrHCgudpRTVd9X1bvJItXNvmbLKkb2hXUPnrd2DxasZI8YAgp6CJFmH+g5plrKF90y1JahowKBgQCrxPEO1CpG/Xso7PuW9fqdz+wS2F6S9UXFm4V0+CcL49ieCY7ImOFtXsTJjQrZEQE7DhONjic07Xd1xlyFjY6RJ5FlFSPGoU3rmbaDKPvcK65nNaH/Nf8V1iWZqTl5Cg4jKboNRilVtAcF+hJNC7jmOdk/kxLDLobxN7XYiiUMwwKBgQCNSrDqkUTI6pqCshTd1o/9IIv6/P79wzIqg7VHW1UUdgMVKZBbTG6UGz5EZUHqQgeHrW898JJ0Frg/DLo/bxYukhjurm3AX7IANc+R2j75a32oyRVXGFQ+3KU+r/0ees21ihjSsiu/AzJIhkOgxjHyKSZOPt7GhSvrW0/3YpbWJQKBgGBJ3F/Vq4V0HxBIGJj9dun0XoAJ7qou+FfX4K47VZgit5GQBgyJNwVadLIPcJ9SGwCB2ZAmue+/lpHdCoyLV/oi1ix190Intkh2OIu588XubqvIsvEf0cjp7NYAuQkTC+3GPFeolw9GBhHhp1StV48nqpMq3P+xG1ApTLUAa9iFAoGAQrbQRkq3TIbsTYIpxE5kM5fgHaaHlcg6qoiLzHuEidWXVa3PssJQnJs5jKGFcErWjn3o3ttfrllk3mm5MzJCChse9a54/KifNhCeDcCQHl/+WPswRBjYz5rw5XJacmz7S8rd7JEEXT2fY3uv47ey4N9CZaWw+Y0UzQ8MeAAJ5jY=";
     private static final String GATEWAY_RSA_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2m4nkQKyQAxJc8VVsz/L6qVbtDWRTBolUK8Dwhi9wH6aygA6363PVNEPM8eRI5W19ssCyfdtNFy6DRAureoYV053ETPUefEA5bHDOQnjbb9PuNEfT651v8cqwEaTptaxj2zujsWI8Ad3R50EyQHsskQWms/gv2aB36XUM4vyOIk4P1f3dxtqigH0YROEYiuwFFqsyJuNSjJzNbCmfgqlQv/+pE/pOV9MIQe0CAdD26JF10QpSssEwKgvKvnXPUynVu09cjSEipev5cLJSApKSDZxrRjSFBXrh6nzg8JK05ehkI8wdsryRUneh0PGN0PgYLP/wjKiqlgTJaItxnb/JQIDAQAB";
-    private static final String APP_ID = "wz4fa3596f449b1ecc";
+    private static final String APP_ID = "wz715fc0d10ee9d156";
 
     private static final String TEST_URL = "https://wiseasy-open.sg.wisepaycloud.com";
 
@@ -29,20 +31,20 @@ public class SgAPITest {
         OpenApiClient openapiClient = new OpenApiClient(APP_ID, TEST_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
 
         //  Instantiate the request class corresponding to the specific API.
-        PayUnifiedorderRequest request = new PayUnifiedorderRequest();
+        CscanbPayGetqrcodeRequest request = new CscanbPayGetqrcodeRequest();
 
         //  The SDK already encapsulates the public parameters; here you only need to pass in the business parameters
-        request.setMerchant_no("332400005419");
+        request.setMerchant_no("322400004292");
+        request.setStore_no("4224000028");
         request.setMerchant_order_no("TEST_" + System.currentTimeMillis());
-        request.setPrice_currency("USD");
-        request.setTrans_amount(345.05);
+        request.setPrice_currency("JPY");
+        request.setTrans_amount(11.0);
         request.setDescription("IPhone 15 5G White");
         request.setExpires(300);
         request.setTerm_ip("127.0.0.1");
-        request.setTerminal_type("WEB");
-        request.setPay_method_id("Coopay");
+        request.setPay_method_id("Alipay+");
 
-        PayUnifiedorderResponse response;
+        CscanbPayGetqrcodeResponse response;
         try {
             response = openapiClient.execute(request, EAuthType.RSA2);
         } catch (OpenApiException e) {
@@ -57,7 +59,7 @@ public class SgAPITest {
             System.err.println("api execute error:  " + JSON.toJSONString(response));
         }
         // Please redirect to the page shown in pay_URL, and the user will complete the remaining payment process
-        System.err.println("pay_url:  " + response.getPay_url());
+        System.err.println("pay_url:  " + response.getQrcode_url());
     }
 
     @Test
