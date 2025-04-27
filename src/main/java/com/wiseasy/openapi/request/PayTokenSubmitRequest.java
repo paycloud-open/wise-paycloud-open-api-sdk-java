@@ -27,6 +27,9 @@ public class PayTokenSubmitRequest extends OpenApiRequest<PayTokenSubmitResponse
     // support cancellation and then pay, you should maintain the correspondence between a business order and the payment request serial number
     private String merchant_order_no;
 
+    // Pay Method Id
+    private String pay_method_id;
+
     // Price currency-ISO three-digit letter code,For example: CNY,USD
     private String price_currency;
 
