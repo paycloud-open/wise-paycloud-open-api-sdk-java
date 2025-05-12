@@ -113,7 +113,7 @@ public class SgAPITest {
 
         //  The SDK already encapsulates the public parameters; here you only need to pass in the business parameters
         request.setMerchant_no("302100085224");
-        request.setMerchant_order_no("L2174546467210125318");
+        request.setMerchant_order_no("L21745464672101253181745747030292");
 
         PayTokenResponse response;
         try {
@@ -144,7 +144,7 @@ public class SgAPITest {
         //  The SDK already encapsulates the public parameters; here you only need to pass in the business parameters
         request.setMerchant_no("302100085224");
         request.setMerchant_order_no("L2174546467210125318" + System.currentTimeMillis());
-        request.setToken("9ec05e72-325e-40fa-a517-3d4e75229915");
+        request.setToken("9ec65738-b447-4cc6-85eb-ecb490a351fb");
         request.setPay_method_id("Visa");
         request.setPrice_currency("ZAR");
         request.setOrder_amount(11.0);

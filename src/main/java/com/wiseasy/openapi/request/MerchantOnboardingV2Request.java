@@ -105,4 +105,7 @@ public class MerchantOnboardingV2Request extends OpenApiRequest<MerchantOnboardi
     // 2 - Frozen status, settlement will be suspended
     private Integer e_account_status;
 
+    // Risk Control Plan ID: Please obtain the Plan ID through the menu "Transactions --> Risk Control --> RC Plan".
+    private Long risk_plan_id;
+
 }
