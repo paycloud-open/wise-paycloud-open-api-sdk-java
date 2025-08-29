@@ -790,4 +790,37 @@ public class APITest {
         // @TODO
     }
 
+    @Test
+    public void ECROrderPrint() {
+        // Instantiate a client
+        OpenApiClient openapiClient = new OpenApiClient(APP_ID, TEST_URL, APP_RSA_PRIVATE_KEY, GATEWAY_RSA_PUBLIC_KEY);
+
+        // Build a request object, set parameters
+        WisehubCloudTransPrintRequest request = new WisehubCloudTransPrintRequest();
+        request.setMerchant_no("302100085224");
+        request.setStore_no("4021000637");
+        request.setTerminal_sn("WPBB002208000123");
+        request.setMerchant_order_no("1747287988735");
+        WisehubCloudPayCloseResponse response;
+        try {
+            // Execute the request
+            response = openapiClient.execute(request);
+        } catch (OpenApiException e) {
+            // Handle network exceptions ......
+            // @TODO
+            System.err.println("\nrequest api error:" + e.getErrCode() + "->>" + e.getErrMsg());
+            return;
+        }
+        if (!response.isSuccess()) {
+            // Handle business exceptions ......
+            // @TODO
+            System.err.println("\napi execute error:  " + JSON.toJSONString(response));
+        }
+
+        // Write your business code based on the API response ......
+        // @TODO
+        System.out.println(response);
+    }
+
+
 }
