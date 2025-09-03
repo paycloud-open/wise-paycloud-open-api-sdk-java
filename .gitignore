@@ -137,3 +137,4 @@ Icon
 /module-cashier-wpos/src/main/resources/gb-config.xml
 
 /*.Test.java
+/target/*
