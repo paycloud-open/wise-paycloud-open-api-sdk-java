@@ -16,9 +16,7 @@ import java.math.BigDecimal;
  * @description 分账请求参数
  * @since 2.4.5
  */
-@Slf4j
 @Data
-@SuppressWarnings("all")
 public class ApplyProfitSharingRequest {
     private static final long serialVersionUID = 1L;
 

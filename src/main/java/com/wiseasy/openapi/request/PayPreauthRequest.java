@@ -1,21 +1,11 @@
 package com.wiseasy.openapi.request;
 
-import com.wiseasy.openapi.response.PayUnifiedorderResponse;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-/**
- * @Auther: liqie
- * @Date: 2021/6/3 16:40
- * @Description: For the web payment scenario, the merchant’s back end calls this API to create a prepaid transaction on the back end
- * of the gateway payment service and initiates the payment process through the web page link. Our web checkout page handles the different
- * logic of various payment methods, making it easier to connect your payments so you can focus on your business rather than your payments
- */
-@Getter
-@Setter
-@ToString
-public class PayUnifiedorderRequest extends OpenApiRequest<PayUnifiedorderResponse> {
+import com.wiseasy.openapi.response.PayPreauthResponse;
+import lombok.Data;
+
+@Data
+public class PayPreauthRequest extends  OpenApiRequest<PayPreauthResponse>{
 
     // The unique identifier of the merchant in the system, which will be assigned after the merchant has successfully settled in.
     // You can log in to the merchant platform to get it
@@ -96,8 +86,5 @@ public class PayUnifiedorderRequest extends OpenApiRequest<PayUnifiedorderRespon
 
     // Address location of the device: latitude
     private String latitude;
-
-    private Integer profit_sharing;
-
 
 }

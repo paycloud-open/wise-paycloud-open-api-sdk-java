@@ -19,8 +19,6 @@ import java.util.List;
  * @since 2.4.5
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@SuppressWarnings("all")
 public class ApplyProfitSharingResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
